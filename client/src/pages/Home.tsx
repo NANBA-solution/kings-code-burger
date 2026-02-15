@@ -81,7 +81,8 @@ export default function Home() {
   // Social Media Links
   const socialLinks = {
     instagram: "https://www.instagram.com/kings_code_burger",
-    googleReviews: "https://www.google.com/maps/place/King's+Code+Burger/@34.6834,135.5085,15z"
+    googleReviews: "https://www.google.com/maps/place/King's+Code+Burger/@34.6834,135.5085,15z",
+    googleNavigation: "https://www.google.com/gasearch?q=king's%20code%20burger%20%E3%82%AA%E3%83%BC%E3%83%8A%E3%83%BC%E6%8F%90%E4%BE%9B&source=sh/x/gs/m2/5#lpstate=pid:1120676595491597304"
   };
 
   const reviews = [
@@ -344,17 +345,30 @@ export default function Home() {
                 </div>
               </div>
 
-              <a 
-                href="https://maps.app.goo.gl/tP5wwysiDmxfsXtYA?g_st=ic"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-4"
-              >
-                <Button className="bg-primary text-primary-foreground hover:bg-primary/90 w-full">
-                  <MapPin className="w-4 h-4 mr-2" />
-                  {t('access.map')}
-                </Button>
-              </a>
+              <div className="space-y-3 mt-4">
+                <a 
+                  href="https://maps.app.goo.gl/tP5wwysiDmxfsXtYA?g_st=ic"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block w-full"
+                >
+                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90 w-full">
+                    <MapPin className="w-4 h-4 mr-2" />
+                    {t('access.map')}
+                  </Button>
+                </a>
+                <a 
+                  href={socialLinks.googleNavigation}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block w-full"
+                >
+                  <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 w-full">
+                    <Globe className="w-4 h-4 mr-2" />
+                    Google Navigation
+                  </Button>
+                </a>
+              </div>
             </Card>
 
             <Card className="p-8 bg-white border-2 border-border card-shadow">
