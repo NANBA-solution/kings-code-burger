@@ -42,7 +42,7 @@ export default function Home() {
       descKey: 'menu.hot_chicken_desc',
       price: "¥1,200",
       tag: "本格派",
-      image: "https://private-us-east-1.manuscdn.com/sessionFile/kg2ECc2675ZMoJSDZdXVXy/sandbox/HlBaHJCulPei3ja9LAykEN-img-3_1771133840000_na1fn_aG90LWNoaWNrZW4tYnVyZ2Vy.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUva2cyRUNjMjY3NVpNb0pTRFpkWFZYeS9zYW5kYm94L0hsQmFISkN1bFBlaTNqYTlMQXlrRU4taW1nLTNfMTc3MTEzMzg0MDAwMF9uYTFmbl9hRzkwTFdOb2FXTnJaVzR0WW5WeVoyVnkucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=CphZJd45WexCTOgkoUVkoeqhQwP2mAb35eCIW-DBMuDrnug1JW6XAeujvrUAv4dagYvL7YMpT8KpIYBNVfpf4bdtWxqv9-dPFWjhuFk-xEP-doh9EEKojNGs9szwkP0s-fJrZPXTWyNas1DEPjB6UqNefv6REjyOvqSHFrljok~PyrMgxkB2OMJ70HChoavOGUnpD0sg0ai2wCcrYiKHYw4skclzqgnBVsTUhvhsaQyEmZeWZF9ePQPBQLiu0CSVCEHVqsYk~dMdeVIySadv440MVbvpspLwu2S4nFKpKI~hles0UySgNDNJdtrZtmOS5l86Za-5Y7H2sSHXNTG3Rw__"
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/hRrjhAGqvgbrygvr.png"
     },
     {
       nameKey: 'menu.hamburger',
@@ -76,15 +76,13 @@ export default function Home() {
       tag: "",
       image: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=800&q=80"
     },
-    {
-      nameKey: 'menu.junk_cheese',
-      nameJaKey: 'menu.junk_cheese_ja',
-      descKey: 'menu.junk_cheese_desc',
-      price: "¥1,800",
-      tag: "",
-      image: "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=800&q=80"
-    }
   ];
+
+  // Social Media Links
+  const socialLinks = {
+    instagram: "https://www.instagram.com/kings_code_burger",
+    googleReviews: "https://www.google.com/maps/place/King's+Code+Burger/@34.6834,135.5085,15z"
+  };
 
   const reviews = [
     {
@@ -130,6 +128,16 @@ export default function Home() {
               >
                 English
               </button>
+            </div>
+            
+            {/* Social Media Links */}
+            <div className="flex gap-3 ml-4 pl-4 border-l border-border">
+              <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href={socialLinks.googleReviews} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
+                <Globe className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </div>
