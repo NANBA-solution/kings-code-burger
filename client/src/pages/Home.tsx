@@ -122,6 +122,10 @@ export default function Home() {
               {t('nav.reviews')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </a>
+            <a href="#instagram" className="text-xs font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
+              INSTAGRAM
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+            </a>
             <a href="#access" className="text-xs font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
               {t('nav.access')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
@@ -314,6 +318,26 @@ export default function Home() {
                 </div>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Instagram Feed Section */}
+      <section id="instagram" className="py-24 bg-white">
+        <div className="container">
+          <h2 className="text-6xl md:text-8xl font-bold text-center mb-4 text-primary">INSTAGRAM</h2>
+          <p className="text-center text-xl text-muted-foreground mb-16">{t('instagram.subtitle') || 'Follow us for the latest burger moments'}</p>
+          
+          <div className="max-w-6xl mx-auto">
+            <iframe
+              src="https://www.instagram.com/kings_code_burger/embed"
+              width="100%"
+              height="600"
+              frameBorder="0"
+              scrolling="no"
+              allowTransparency={true}
+              className="rounded-lg border-2 border-border"
+            />
           </div>
         </div>
       </section>
