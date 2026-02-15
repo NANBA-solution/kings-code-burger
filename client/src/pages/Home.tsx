@@ -25,7 +25,7 @@ export default function Home() {
       descKey: 'menu.cheese_burger_desc',
       price: "¥1,200",
       tag: "定番",
-      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80"
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/zlcHmSYDrBfrZYpe.png"
     },
     {
       nameKey: 'menu.double_cheese',
