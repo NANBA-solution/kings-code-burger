@@ -34,7 +34,7 @@ export default function Home() {
       price: "¥2,000",
       tag: "人気NO.1",
       tagColor: "lime",
-      image: "https://private-us-east-1.manuscdn.com/sessionFile/kg2ECc2675ZMoJSDZdXVXy/sandbox/HlBaHJCulPei3ja9LAykEN-img-2_1771133840000_na1fn_ZG91YmxlLWNoZWVzZS1idXJnZXI.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUva2cyRUNjMjY3NVpNb0pTRFpkWFZYeS9zYW5kYm94L0hsQmFISkN1bFBlaTNqYTlMQXlrRU4taW1nLTJfMTc3MTEzMzg0MDAwMF9uYTFmbl9aRzkxWW14bExXTm9aV1Z6WlMxaWRYSm5aWEkucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=awsBjLNS7kjQjnnusLyVAQQkwQGoGjsS1f89WcBJtly-DyFoDiBvNdMnmTS0-WECPAc-bT-p72MMbiYVx6zodcP8H1EGlvQBySZR71A7ynRDbmrGyTsdZdxY4OrEtWQVCR-jrF08OR48oc~E~J~sAKk7qzerzdQrNq-Y3ZXrpE9sXiqRm-UlF0F-OEfvyUw8YOE1qK9zgrSBjfNW-jsdsF2~TkObsl4g-mGZJb7T4g05jJoRXO6xmaB-W960orDU~yLy99E7T4bqgDD75fLb1iaOwt08vbmc0XrO-14if-uHb~nUPewW~M1gHoF05-pwUSu0wwFxs6H~Kqw7AJiCeQ__"
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/dpKaxlCQBeVpYUTZ.png"
     },
     {
       nameKey: 'menu.hot_chicken',
@@ -105,39 +105,53 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border card-shadow">
-        <div className="container flex items-center justify-between py-4">
-          <h1 className="text-2xl font-bold text-primary">KING'S CODE</h1>
-          <div className="flex gap-6 items-center">
-            <a href="#philosophy" className="text-sm text-foreground hover:text-primary transition-colors">{t('nav.philosophy')}</a>
-            <a href="#menu" className="text-sm text-foreground hover:text-primary transition-colors">{t('nav.menu')}</a>
-            <a href="#reviews" className="text-sm text-foreground hover:text-primary transition-colors">{t('nav.reviews')}</a>
-            <a href="#access" className="text-sm text-foreground hover:text-primary transition-colors">{t('nav.access')}</a>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b-2 border-primary card-shadow">
+        <div className="container flex items-center justify-between py-3">
+          <h1 className="text-2xl font-bold text-primary tracking-wider">KING'S CODE</h1>
+          <div className="hidden md:flex gap-8 items-center">
+            <a href="#philosophy" className="text-xs font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
+              {t('nav.philosophy')}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="#menu" className="text-xs font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
+              {t('nav.menu')}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="#reviews" className="text-xs font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
+              {t('nav.reviews')}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="#access" className="text-xs font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
+              {t('nav.access')}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+            </a>
+          </div>
+          
+          <div className="flex gap-4 items-center">
+            {/* Social Media Links */}
+            <div className="flex gap-3">
+              <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-all duration-300 transform hover:scale-110">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href={socialLinks.googleReviews} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-all duration-300 transform hover:scale-110">
+                <Globe className="w-5 h-5" />
+              </a>
+            </div>
             
             {/* Language Toggle */}
-            <div className="flex gap-2 ml-4 pl-4 border-l border-border">
+            <div className="flex gap-1 bg-secondary rounded-lg p-1">
               <button
                 onClick={() => setLanguage('ja')}
-                className={`px-3 py-1 text-sm font-bold transition-all ${language === 'ja' ? 'bg-primary text-primary-foreground' : 'text-foreground hover:text-primary'}`}
+                className={`px-3 py-1 text-xs font-bold rounded transition-all duration-300 ${language === 'ja' ? 'bg-primary text-primary-foreground shadow-md' : 'text-foreground hover:text-primary'}`}
               >
                 日本語
               </button>
               <button
                 onClick={() => setLanguage('en')}
-                className={`px-3 py-1 text-sm font-bold transition-all ${language === 'en' ? 'bg-primary text-primary-foreground' : 'text-foreground hover:text-primary'}`}
+                className={`px-3 py-1 text-xs font-bold rounded transition-all duration-300 ${language === 'en' ? 'bg-primary text-primary-foreground shadow-md' : 'text-foreground hover:text-primary'}`}
               >
-                English
+                EN
               </button>
-            </div>
-            
-            {/* Social Media Links */}
-            <div className="flex gap-3 ml-4 pl-4 border-l border-border">
-              <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href={socialLinks.googleReviews} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
-                <Globe className="w-5 h-5" />
-              </a>
             </div>
           </div>
         </div>
