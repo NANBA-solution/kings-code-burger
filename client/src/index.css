@@ -4,11 +4,11 @@
 @custom-variant dark (&:is(.dark *));
 
 /* 
-Design Philosophy: Urban Grunge Americana
-- Charcoal black base with lime green accents
-- Rough textures meet refined typography
-- Diagonal cuts and overlapping elements
-- Smash burger "press" visual metaphor
+Design Philosophy: Clean Modern Burger Shop
+- White and green color scheme
+- Fresh, clean aesthetic
+- Lime green accents for energy
+- Professional and welcoming
 */
 
 @theme inline {
@@ -54,37 +54,37 @@ Design Philosophy: Urban Grunge Americana
 
 :root {
   --primary: oklch(0.67 0.15 120);
-  --primary-foreground: oklch(0.1 0.01 120);
+  --primary-foreground: oklch(1 0 0);
   --sidebar-primary: oklch(0.67 0.15 120);
-  --sidebar-primary-foreground: oklch(0.1 0.01 120);
+  --sidebar-primary-foreground: oklch(1 0 0);
   --chart-1: oklch(0.67 0.15 120);
   --chart-2: oklch(0.55 0.12 120);
   --chart-3: oklch(0.45 0.10 120);
   --chart-4: oklch(0.35 0.08 120);
   --chart-5: oklch(0.25 0.06 120);
   --radius: 0;
-  --background: oklch(0.15 0.01 0);
-  --foreground: oklch(0.95 0.01 0);
-  --card: oklch(0.18 0.01 0);
-  --card-foreground: oklch(0.95 0.01 0);
-  --popover: oklch(0.18 0.01 0);
-  --popover-foreground: oklch(0.95 0.01 0);
-  --secondary: oklch(0.25 0.01 0);
-  --secondary-foreground: oklch(0.95 0.01 0);
-  --muted: oklch(0.30 0.01 0);
-  --muted-foreground: oklch(0.65 0.01 0);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.2 0.01 0);
+  --card: oklch(0.98 0.001 0);
+  --card-foreground: oklch(0.2 0.01 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.01 0);
+  --secondary: oklch(0.95 0.001 0);
+  --secondary-foreground: oklch(0.2 0.01 0);
+  --muted: oklch(0.90 0.001 0);
+  --muted-foreground: oklch(0.5 0.01 0);
   --accent: oklch(0.67 0.15 120);
-  --accent-foreground: oklch(0.1 0.01 120);
+  --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.35 0.01 0);
-  --input: oklch(0.35 0.01 0);
+  --border: oklch(0.92 0.001 0);
+  --input: oklch(0.95 0.001 0);
   --ring: oklch(0.67 0.15 120);
-  --sidebar: oklch(0.18 0.01 0);
-  --sidebar-foreground: oklch(0.95 0.01 0);
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.2 0.01 0);
   --sidebar-accent: oklch(0.67 0.15 120);
-  --sidebar-accent-foreground: oklch(0.1 0.01 120);
-  --sidebar-border: oklch(0.35 0.01 0);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.92 0.001 0);
   --sidebar-ring: oklch(0.67 0.15 120);
 }
 
@@ -143,30 +143,9 @@ Design Philosophy: Urban Grunge Americana
     }
   }
 
-  /* Grunge texture overlay */
-  .grunge-texture {
-    position: relative;
-  }
-  .grunge-texture::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* Diagonal section divider */
-  .diagonal-cut-top {
-    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
-    margin-top: -5rem;
-    padding-top: 8rem;
-  }
-
-  .diagonal-cut-bottom {
-    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
-    margin-bottom: -5rem;
-    padding-bottom: 8rem;
+  /* Clean shadow for cards */
+  .card-shadow {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 
   /* Accent line - brush stroke style */
@@ -182,5 +161,18 @@ Design Philosophy: Urban Grunge Americana
     height: 6px;
     background: oklch(0.67 0.15 120);
     transform: skewY(-1deg);
+  }
+
+  /* Diagonal section divider */
+  .diagonal-cut-top {
+    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+    margin-top: -5rem;
+    padding-top: 8rem;
+  }
+
+  .diagonal-cut-bottom {
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+    margin-bottom: -5rem;
+    padding-bottom: 8rem;
   }
 }
