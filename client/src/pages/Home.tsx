@@ -6,7 +6,7 @@ Design Philosophy: Clean Modern Burger Shop
 - Multilingual support (Japanese / English)
 */
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Star, MapPin, Phone, Clock, Instagram, Globe, Heart } from "lucide-react";
@@ -14,10 +14,37 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
   const { language, setLanguage, t } = useLanguage();
+  const instagramGridRef = useRef<HTMLDivElement>(null);
 
   const scrollToMenu = () => {
     document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  // Intersection Observer for Instagram videos - only play when visible
+  useEffect(() => {
+    const videos = instagramGridRef.current?.querySelectorAll('video');
+    if (!videos || videos.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target as HTMLVideoElement;
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    videos.forEach((video) => observer.observe(video));
+
+    return () => {
+      videos.forEach((video) => observer.unobserve(video));
+    };
+  }, []);
 
   const menuItems = [
     {
@@ -344,7 +371,7 @@ export default function Home() {
           <p className="text-center text-sm md:text-lg lg:text-xl text-muted-foreground mb-8 md:mb-16">{t('instagram.subtitle') || 'Follow us for the latest burger moments'}</p>
           
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6">
+            <div ref={instagramGridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6">
               {/* Instagram Feed Items - Update with your Instagram photos */}
               <a href="https://www.instagram.com/kingscodeburger" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-lg aspect-square bg-muted hidden md:block">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -410,7 +437,7 @@ export default function Home() {
                  rel="noopener noreferrer"
                  className="group relative overflow-hidden rounded-md md:rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
                >
-                 <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/mibySkkqWaLSHakX.mp4" autoPlay loop muted className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                 <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/mibySkkqWaLSHakX.mp4" loop muted className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                    <Heart className="w-5 md:w-8 h-5 md:h-8 text-white" />
@@ -424,7 +451,7 @@ export default function Home() {
                  rel="noopener noreferrer"
                  className="group relative overflow-hidden rounded-md md:rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
                >
-                 <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/eZTdqqdpGNBOafkV.mp4" autoPlay loop muted className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                 <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/eZTdqqdpGNBOafkV.mp4" loop muted className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                    <Heart className="w-5 md:w-8 h-5 md:h-8 text-white" />
@@ -438,7 +465,7 @@ export default function Home() {
                  rel="noopener noreferrer"
                  className="group relative overflow-hidden rounded-md md:rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow hidden md:block"
                >
-                 <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/vLbasjUXULlmilLL.mp4" autoPlay loop muted className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                 <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/vLbasjUXULlmilLL.mp4" loop muted className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                    <Heart className="w-8 h-8 text-white" />
