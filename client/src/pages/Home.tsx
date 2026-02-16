@@ -346,7 +346,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6">
               {/* Instagram Feed Items - Update with your Instagram photos */}
-              <a href="https://www.instagram.com/kings_code_burger/" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-lg aspect-square bg-muted hidden md:block">
+              <a href="https://www.instagram.com/kingscodeburger" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-lg aspect-square bg-muted hidden md:block">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
                   <Instagram className="w-8 h-8 text-white" />
@@ -363,7 +363,7 @@ export default function Home() {
               {/* Instagram Feed Items - Images and Videos */}
               {/* Photo 1 */}
                <a
-                 href="https://www.instagram.com/kings_code_burger/"
+                 href="https://www.instagram.com/kingscodeburger"
                  target="_blank"
                  rel="noopener noreferrer"
                  className="group relative overflow-hidden rounded-md md:rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
@@ -377,7 +377,7 @@ export default function Home() {
               
               {/* Photo 2 */}
                <a
-                 href="https://www.instagram.com/kings_code_burger/"
+                 href="https://www.instagram.com/kingscodeburger"
                  target="_blank"
                  rel="noopener noreferrer"
                  className="group relative overflow-hidden rounded-md md:rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
@@ -391,7 +391,7 @@ export default function Home() {
               
               {/* Photo 3 */}
                <a
-                 href="https://www.instagram.com/kings_code_burger/"
+                 href="https://www.instagram.com/kingscodeburger"
                  target="_blank"
                  rel="noopener noreferrer"
                  className="group relative overflow-hidden rounded-md md:rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow hidden md:block"
@@ -405,7 +405,7 @@ export default function Home() {
               
               {/* Video 1 */}
                <a
-                 href="https://www.instagram.com/kings_code_burger/"
+                 href="https://www.instagram.com/kingscodeburger"
                  target="_blank"
                  rel="noopener noreferrer"
                  className="group relative overflow-hidden rounded-md md:rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
@@ -419,7 +419,7 @@ export default function Home() {
               
                {/* Video 2 */}
                <a
-                 href="https://www.instagram.com/kings_code_burger/"
+                 href="https://www.instagram.com/kingscodeburger"
                  target="_blank"
                  rel="noopener noreferrer"
                  className="group relative overflow-hidden rounded-md md:rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
@@ -431,14 +431,14 @@ export default function Home() {
                  </div>
                </a>
               
-              {/* Video 3 */}
+               {/* Video 3 */}
                <a
-                 href="https://www.instagram.com/kings_code_burger/"
+                 href="https://www.instagram.com/kingscodeburger"
                  target="_blank"
                  rel="noopener noreferrer"
                  className="group relative overflow-hidden rounded-md md:rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow hidden md:block"
                >
-                 <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/XPuDcvHvTTCwzrhw.mp4" autoPlay loop muted className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                 <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/vLbasjUXULlmilLL.mp4" autoPlay loop muted className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                    <Heart className="w-8 h-8 text-white" />
@@ -447,7 +447,7 @@ export default function Home() {
             </div>
             <div className="text-center mt-6 md:mt-12">
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-sm md:text-base">
-                <a href="https://www.instagram.com/kings_code_burger/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/kingscodeburger" target="_blank" rel="noopener noreferrer">
                    View on Instagram
                 </a>
               </Button>
