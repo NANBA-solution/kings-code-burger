@@ -50,7 +50,7 @@ export default function Home() {
       descKey: 'menu.hamburger_desc',
       price: "¥1,300",
       tag: "",
-      image: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&q=80"
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/EEDUcZlgKjPSrUdm.png"
     },
     {
       nameKey: 'menu.bacon_lettuce',
@@ -58,7 +58,7 @@ export default function Home() {
       descKey: 'menu.bacon_lettuce_desc',
       price: "¥1,400",
       tag: "",
-      image: "https://private-us-east-1.manuscdn.com/sessionFile/kg2ECc2675ZMoJSDZdXVXy/sandbox/HlBaHJCulPei3ja9LAykEN-img-4_1771133835000_na1fn_YmFjb24tYnVyZ2Vy.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUva2cyRUNjMjY3NVpNb0pTRFpkWFZYeS9zYW5kYm94L0hsQmFISkN1bFBlaTNqYTlMQXlrRU4taW1nLTRfMTc3MTEzMzgzNTAwMF9uYTFmbl9ZbUZqYjI0dFluVnlaMlZ5LnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=DLdxGT1uY5BoHIq6uhHqb6k01WkbHkm8gvSZSJCw5RMUcdgxyCb90tIQnANhClaN40etkCkiz1A8bKMVjF1K67oh8S-qnWnrFk-7z0hdGAG3WRiCvD8i0TQA8FfRuBs2aDA-bZiTpjg3eCCYJPG2MjO28VCdq9i3TIjU2jdOkja9ZuYDeXrukrJ3VFZORw0KKcmRVGsKKyqHfRbEnoikYNTxTcRrfc2oL7tKs1cAEBroL~Gqx2ihHIaIlz1RnOfdRnAXdx37f--ROLOBfc08oIGntq2DhURJPtBwM1FtgToxspgdWHnkoXW9KlZfULDcQ1ta9M-WAJ5ZGl~ARJvVSg__"
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/epKmYfJppyEWlUwe.png"
     },
     {
       nameKey: 'menu.double_burger',
@@ -66,7 +66,7 @@ export default function Home() {
       descKey: 'menu.double_burger_desc',
       price: "¥2,000",
       tag: "",
-      image: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=800&q=80"
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/ZzUSZGRmMVxPyenB.png"
     },
     {
       nameKey: 'menu.thick_bacon',
@@ -74,7 +74,7 @@ export default function Home() {
       descKey: 'menu.thick_bacon_desc',
       price: "¥1,800",
       tag: "",
-      image: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=800&q=80"
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/dPHfmSzlNWjndvOn.png"
     },
   ];
 
