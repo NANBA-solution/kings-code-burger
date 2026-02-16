@@ -16,6 +16,17 @@ export default function Home() {
   const { language, setLanguage, t } = useLanguage();
   const instagramGridRef = useRef<HTMLDivElement>(null);
 
+  // Update document title and meta tags for SEO based on language
+  useEffect(() => {
+    if (language === 'ja') {
+      document.title = "King's Code Burger | 大阪のスマッシュバーガー専門店";
+      document.querySelector('meta[name="description"]')?.setAttribute('content', '大阪のスマッシュバーガー専門店。100%オージービーフを高温で焼き上げた、外はカリッ、中はジュワッなハンバーガー。Uber Eats対応。');
+    } else {
+      document.title = "King's Code Burger | Osaka's Best Smash Burger";
+      document.querySelector('meta[name="description"]')?.setAttribute('content', 'Osaka\'s best smash burger restaurant. 100% Australian beef smashed at high heat. Crispy outside, juicy inside. Order on Uber Eats.');
+    }
+  }, [language]);
+
   const scrollToMenu = () => {
     document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -217,11 +228,11 @@ export default function Home() {
         />
         <div className="container relative z-10 text-center">
           <div className="animate-fade-in-up">
-            <h2 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold mb-2 md:mb-4 text-white">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold mb-2 md:mb-4 text-white">
               {t('hero.title1')}<br />
               <span className="text-primary accent-line inline-block">{t('hero.title2')}</span><br />
               {t('hero.title3')}
-            </h2>
+            </h1>
             <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-white mb-4 md:mb-6 max-w-3xl mx-auto whitespace-pre-line">
               {t('hero.subtitle')}
             </p>
