@@ -53,15 +53,15 @@ Design Philosophy: Clean Modern Burger Shop
 }
 
 :root {
-  --primary: oklch(0.67 0.15 120);
+  --primary: oklch(0.65 0.22 142);
   --primary-foreground: oklch(1 0 0);
-  --sidebar-primary: oklch(0.67 0.15 120);
+  --sidebar-primary: oklch(0.65 0.22 142);
   --sidebar-primary-foreground: oklch(1 0 0);
-  --chart-1: oklch(0.67 0.15 120);
-  --chart-2: oklch(0.55 0.12 120);
-  --chart-3: oklch(0.45 0.10 120);
-  --chart-4: oklch(0.35 0.08 120);
-  --chart-5: oklch(0.25 0.06 120);
+  --chart-1: oklch(0.65 0.22 142);
+  --chart-2: oklch(0.55 0.18 142);
+  --chart-3: oklch(0.45 0.15 142);
+  --chart-4: oklch(0.35 0.12 142);
+  --chart-5: oklch(0.25 0.09 142);
   --radius: 0;
   --background: oklch(1 0 0);
   --foreground: oklch(0.2 0.01 0);
@@ -73,7 +73,7 @@ Design Philosophy: Clean Modern Burger Shop
   --secondary-foreground: oklch(0.2 0.01 0);
   --muted: oklch(0.90 0.001 0);
   --muted-foreground: oklch(0.5 0.01 0);
-  --accent: oklch(0.67 0.15 120);
+  --accent: oklch(0.65 0.22 142);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);

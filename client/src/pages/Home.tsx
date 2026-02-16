@@ -6,9 +6,10 @@ Design Philosophy: Clean Modern Burger Shop
 - Multilingual support (Japanese / English)
 */
 
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Star, MapPin, Phone, Clock, Instagram, Globe } from "lucide-react";
+import { Star, MapPin, Phone, Clock, Instagram, Globe, Heart } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
@@ -102,6 +103,20 @@ export default function Home() {
       flag: "🇯🇵"
     }
   ];
+
+  // Instagram auto-refresh effect
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = '//www.instagram.com/embed.js';
+    script.async = true;
+    document.body.appendChild(script);
+    
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -329,15 +344,48 @@ export default function Home() {
           <p className="text-center text-xl text-muted-foreground mb-16">{t('instagram.subtitle') || 'Follow us for the latest burger moments'}</p>
           
           <div className="max-w-6xl mx-auto">
-            <iframe
-              src="https://www.instagram.com/kings_code_burger/embed"
-              width="100%"
-              height="600"
-              frameBorder="0"
-              scrolling="no"
-              allowTransparency={true}
-              className="rounded-lg border-2 border-border"
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Instagram Feed Items - Update with your Instagram photos */}
+              <a href="https://www.instagram.com/kings_code_burger/" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-lg aspect-square bg-muted">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
+                  <Instagram className="w-8 h-8 text-white" />
+                </div>
+                <div className="w-full h-full bg-gradient-to-br from-primary via-primary/50 to-white flex items-center justify-center text-white text-center p-6">
+                  <div>
+                    <Instagram className="w-12 h-12 mx-auto mb-4" />
+                    <p className="font-bold text-lg">Follow us</p>
+                    <p className="text-sm">@kings_code_burger</p>
+                  </div>
+                </div>
+              </a>
+              
+              {/* Placeholder items for Instagram photos */}
+              {[1, 2, 3, 4, 5, 6].map((item) => (
+                <a
+                  key={item}
+                  href="https://www.instagram.com/kings_code_burger/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative overflow-hidden rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
+                    <Heart className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-100 flex items-center justify-center text-gray-400">
+                    <span className="text-sm font-medium">Photo {item}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div className="text-center mt-12">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+                <a href="https://www.instagram.com/kings_code_burger/" target="_blank" rel="noopener noreferrer">
+                  View on Instagram
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
