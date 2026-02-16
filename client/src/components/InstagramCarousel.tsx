@@ -59,20 +59,20 @@ export default function InstagramCarousel({ items, instagramUrl }: InstagramCaro
   const currentItem = items[currentIndex];
 
   return (
-    <div className="relative w-full max-w-2xl mx-auto">
+    <div className="relative w-full max-w-xl mx-auto">
       {/* Main Carousel */}
-      <div className="relative overflow-hidden rounded-lg md:rounded-xl aspect-square bg-muted group">
+      <div className="relative overflow-hidden rounded-lg md:rounded-lg aspect-square bg-muted group h-64 md:h-80">
         {/* Follow Button Overlay */}
-        <div className="absolute top-0 left-0 right-0 z-20 p-3 md:p-4 flex justify-between items-start">
-          <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">
-            <Instagram className="w-4 h-4 text-white" />
-            <span className="text-white font-semibold text-xs md:text-sm">@kings_code_burger</span>
+        <div className="absolute top-0 left-0 right-0 z-20 p-2 md:p-3 flex justify-between items-start">
+          <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-sm px-2.5 py-1 rounded-full">
+            <Instagram className="w-3 h-3 text-white" />
+            <span className="text-white font-semibold text-xs">@kings_code_burger</span>
           </div>
           <a
             href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground px-3 py-1.5 rounded-full font-semibold text-xs md:text-sm transition-all duration-300 transform hover:scale-105"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-2.5 py-1 rounded-full font-semibold text-xs transition-all duration-300 transform hover:scale-105"
           >
             Follow
           </a>
@@ -115,26 +115,26 @@ export default function InstagramCarousel({ items, instagramUrl }: InstagramCaro
         {/* Navigation Buttons */}
         <button
           onClick={goToPrevious}
-          className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 p-1.5 md:p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white transition-all duration-300 transform hover:scale-110"
+          className="absolute left-1 md:left-3 top-1/2 -translate-y-1/2 z-10 p-1 md:p-1.5 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white transition-all duration-300 transform hover:scale-110"
         >
-          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+          <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
         </button>
 
         <button
           onClick={goToNext}
-          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 p-1.5 md:p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white transition-all duration-300 transform hover:scale-110"
+          className="absolute right-1 md:right-3 top-1/2 -translate-y-1/2 z-10 p-1 md:p-1.5 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white transition-all duration-300 transform hover:scale-110"
         >
-          <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+          <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
         </button>
 
         {/* Item Counter */}
-        <div className="absolute bottom-3 right-3 md:bottom-4 md:right-4 z-10 bg-black/40 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs md:text-sm font-semibold">
-          {currentIndex + 1} / {items.length}
+        <div className="absolute bottom-2 right-2 md:bottom-3 md:right-3 z-10 bg-black/40 backdrop-blur-sm text-white px-1.5 py-0.5 rounded-full text-xs font-semibold">
+          {currentIndex + 1}/{items.length}
         </div>
       </div>
 
       {/* Dot Indicators */}
-      <div className="flex justify-center gap-1.5 md:gap-2 mt-4 md:mt-6 flex-wrap">
+      <div className="flex justify-center gap-1 md:gap-1.5 mt-3 md:mt-4 flex-wrap">
         {items.map((_, index) => (
           <button
             key={index}
@@ -149,11 +149,11 @@ export default function InstagramCarousel({ items, instagramUrl }: InstagramCaro
       </div>
 
       {/* View on Instagram Button */}
-      <div className="text-center mt-4 md:mt-6">
+      <div className="text-center mt-2 md:mt-3">
         <Button
           asChild
           size="sm"
-          className="bg-primary hover:bg-primary/90 text-xs md:text-sm"
+          className="bg-primary hover:bg-primary/90 text-xs h-8 px-3"
         >
           <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
             View on Instagram

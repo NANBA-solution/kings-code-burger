@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import EmblaCarousel from 'embla-carousel-react';
+import useEmblaCarousel from 'embla-carousel-react';
 
 interface MenuItem {
   nameKey: string;
@@ -20,68 +19,99 @@ interface MenuCarouselProps {
 }
 
 export default function MenuCarousel({ items, t }: MenuCarouselProps) {
-  const [emblaApi, setEmblaApi] = useState<any>(null);
+  const [emblaApi, emblaApi_setEmblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    try {
+      const api = emblaApi as any;
+      setSelectedIndex(api.selectedScrollSnap?.() ?? 0);
+      setCanScrollPrev(api.canScrollPrev?.() ?? false);
+      setCanScrollNext(api.canScrollNext?.() ?? false);
+    } catch (e) {
+      // Silently handle errors
+    }
+  }, [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi) return;
-
-    const onSelect = () => {
-      setSelectedIndex(emblaApi.selectedScrollSnap());
-      setCanScrollPrev(emblaApi.canScrollPrev());
-      setCanScrollNext(emblaApi.canScrollNext());
-    };
-
-    emblaApi.on('select', onSelect);
     onSelect();
-
-    return () => {
-      emblaApi.off('select', onSelect);
-    };
-  }, [emblaApi]);
+    try {
+      const api = emblaApi as any;
+      api.on?.('select', onSelect);
+      return () => {
+        api.off?.('select', onSelect);
+      };
+    } catch (e) {
+      // Silently handle errors
+    }
+  }, [emblaApi, onSelect]);
 
   // Auto-play effect
   useEffect(() => {
     if (!autoPlay || !emblaApi) return;
 
-    const intervalId = setInterval(() => {
-      if (emblaApi.canScrollNext()) {
-        emblaApi.scrollNext();
-      } else {
-        emblaApi.scrollToIndex(0);
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+
+    autoPlayRef.current = setInterval(() => {
+      try {
+        const api = emblaApi as any;
+        if (api.canScrollNext?.()) {
+          api.scrollNext?.();
+        } else {
+          api.scrollToIndex?.(0);
+        }
+      } catch (e) {
+        // Silently handle errors
       }
     }, 5000);
 
-    return () => clearInterval(intervalId);
+    return () => {
+      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    };
   }, [autoPlay, emblaApi]);
 
-  const scrollPrev = () => {
-    emblaApi?.scrollPrev();
-    setAutoPlay(false);
-    // Resume auto-play after 5 seconds of inactivity
-    setTimeout(() => setAutoPlay(true), 5000);
-  };
+  const scrollPrev = useCallback(() => {
+    try {
+      const api = emblaApi as any;
+      api.scrollPrev?.();
+      setAutoPlay(false);
+      setTimeout(() => setAutoPlay(true), 5000);
+    } catch (e) {
+      // Silently handle errors
+    }
+  }, [emblaApi]);
 
-  const scrollNext = () => {
-    emblaApi?.scrollNext();
-    setAutoPlay(false);
-    // Resume auto-play after 5 seconds of inactivity
-    setTimeout(() => setAutoPlay(true), 5000);
-  };
+  const scrollNext = useCallback(() => {
+    try {
+      const api = emblaApi as any;
+      api.scrollNext?.();
+      setAutoPlay(false);
+      setTimeout(() => setAutoPlay(true), 5000);
+    } catch (e) {
+      // Silently handle errors
+    }
+  }, [emblaApi]);
 
-  const goToSlide = (index: number) => {
-    emblaApi?.scrollToIndex(index);
-    setAutoPlay(false);
-    // Resume auto-play after 5 seconds of inactivity
-    setTimeout(() => setAutoPlay(true), 5000);
-  };
+  const goToSlide = useCallback((index: number) => {
+    try {
+      const api = emblaApi as any;
+      api.scrollToIndex?.(index);
+      setAutoPlay(false);
+      setTimeout(() => setAutoPlay(true), 5000);
+    } catch (e) {
+      // Silently handle errors
+    }
+  }, [emblaApi]);
 
   return (
-    <div className="relative">
-      <div className="overflow-hidden">
+    <div className="relative w-full">
+      <div className="overflow-hidden" ref={emblaApi_setEmblaApi as any}>
         <div className="flex gap-4 md:gap-6">
           {items.map((item, index) => (
             <div
