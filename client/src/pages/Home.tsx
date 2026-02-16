@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Star, MapPin, Phone, Clock, Instagram, Globe, Heart } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import MenuCarousel from "@/components/MenuCarousel";
+import InstagramCarousel from "@/components/InstagramCarousel";
 
 export default function Home() {
   const { language, setLanguage, t } = useLanguage();
@@ -311,36 +313,8 @@ export default function Home() {
           <h2 className="text-6xl md:text-8xl font-bold text-center mb-4 text-primary">{t('menu.title')}</h2>
           <p className="text-center text-lg text-muted-foreground mb-16">{t('menu.subtitle')}</p>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {menuItems.map((item, index) => (
-              <Card 
-                key={index} 
-                className="overflow-hidden bg-white border-2 border-border hover:border-primary transition-all duration-300 hover:transform hover:rotate-1 hover:scale-105 group card-shadow"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <img 
-                    src={item.image} 
-                    alt={t(item.nameKey)}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  {item.tag && (
-                    <div className={`absolute top-4 right-4 px-4 py-2 font-bold text-sm ${item.tagColor === 'lime' ? 'bg-primary text-primary-foreground' : 'bg-secondary text-secondary-foreground'}`}>
-                      {item.tag}
-                    </div>
-                  )}
-                </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-3">
-                    <div>
-                      <h3 className="text-2xl font-bold text-foreground mb-1">{t(item.nameKey)}</h3>
-                      <p className="text-sm text-muted-foreground">{t(item.nameJaKey)}</p>
-                    </div>
-                    <span className="text-2xl font-bold text-primary">{item.price}</span>
-                  </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{t(item.descKey)}</p>
-                </div>
-              </Card>
-            ))}
+          <div className="px-4 md:px-0">
+            <MenuCarousel items={menuItems} t={t} />
           </div>
         </div>
       </section>
@@ -382,7 +356,18 @@ export default function Home() {
           <p className="text-center text-sm md:text-lg lg:text-xl text-muted-foreground mb-8 md:mb-16">{t('instagram.subtitle') || 'Follow us for the latest burger moments'}</p>
           
           <div className="max-w-7xl mx-auto">
-            <div ref={instagramGridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6">
+            <InstagramCarousel 
+              items={[
+                { type: 'image' as const, src: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/KkkfCfITosPVCBCR.jpeg', alt: 'Instagram Photo 1' },
+                { type: 'image' as const, src: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/hufNShsLtsrzCKvw.jpeg', alt: 'Instagram Photo 2' },
+                { type: 'image' as const, src: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/owUfLkcHOrGcviBx.jpeg', alt: 'Instagram Photo 3' },
+                { type: 'video' as const, src: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/mibySkkqWaLSHakX.mp4', alt: 'Instagram Video 1' },
+                { type: 'video' as const, src: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/eZTdqqdpGNBOafkV.mp4', alt: 'Instagram Video 2' },
+                { type: 'video' as const, src: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/vLbasjUXULlmilLL.mp4', alt: 'Instagram Video 3' }
+              ]}
+              instagramUrl={socialLinks.instagram}
+            />
+            <div ref={instagramGridRef} className="hidden">
               {/* Instagram Feed Items - Update with your Instagram photos */}
               <a href="https://www.instagram.com/kingscodeburger" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-lg aspect-square bg-muted hidden md:block">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -482,13 +467,6 @@ export default function Home() {
                    <Heart className="w-8 h-8 text-white" />
                  </div>
                </a>
-            </div>
-            <div className="text-center mt-6 md:mt-12">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-sm md:text-base">
-                <a href="https://www.instagram.com/kingscodeburger" target="_blank" rel="noopener noreferrer">
-                   View on Instagram
-                </a>
-              </Button>
             </div>
           </div>
         </div>
