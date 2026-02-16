@@ -1,0 +1,58 @@
+{
+  "business": {
+    "name": "King's Code Burger",
+    "nameJa": "キングスコードバーガー",
+    "description": "100%オージービーフを高温で焼き上げたスマッシュバーガー専門店",
+    "descriptionEn": "Premium smash burger restaurant using 100% Australian beef",
+    "address": {
+      "streetAddress": "大阪市北区西天満5-11-4",
+      "addressLocality": "大阪市",
+      "addressRegion": "大阪府",
+      "postalCode": "530-0047",
+      "addressCountry": "JP"
+    },
+    "telephone": "080-1520-0694",
+    "coordinates": {
+      "latitude": 34.6852,
+      "longitude": 135.5048
+    },
+    "hours": {
+      "weekday": {
+        "opens": "13:00",
+        "closes": "20:00",
+        "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+      },
+      "weekend": {
+        "opens": "11:00",
+        "closes": "20:00",
+        "days": ["Saturday", "Sunday"]
+      }
+    },
+    "rating": {
+      "ratingValue": 4.7,
+      "ratingCount": 83,
+      "bestRating": 5,
+      "worstRating": 1
+    },
+    "cuisine": "Burger",
+    "priceRange": "$$",
+    "paymentMethods": ["Cash", "Credit Card"],
+    "currency": "JPY",
+    "website": "https://kingscodeburger.com",
+    "social": {
+      "instagram": "https://www.instagram.com/kingscodeburger",
+      "googleMaps": "https://maps.app.goo.gl/tP5wwysiDmxfsXtYA?g_st=ic",
+      "googleNavigation": "https://www.google.com/gasearch?q=king's%20code%20burger%20%E3%82%AA%E3%83%BC%E3%83%8A%E3%83%BC%E6%8F%90%E4%BE%9B&source=sh/x/gs/m2/5#lpstate=pid:1120676595491597304",
+      "uberEats": "https://www.ubereats.com/jp/store/キングス-コート-ハンバーガー-kings-code-hamburger/tLo6VIseXdufF6wzpPTOFQ"
+    },
+    "nearestStation": {
+      "name": "Minamimorimachi Station",
+      "nameJa": "南森町駅",
+      "distance": "5 minutes walk"
+    },
+    "serviceArea": {
+      "areaServed": "Osaka, Japan",
+      "areaServedCode": "JP-27"
+    }
+  }
+}
