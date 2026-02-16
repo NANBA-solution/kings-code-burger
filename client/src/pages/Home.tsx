@@ -13,6 +13,8 @@ import { Star, MapPin, Phone, Clock, Instagram, Globe, Heart } from "lucide-reac
 import { useLanguage } from "@/contexts/LanguageContext";
 import MenuCarousel from "@/components/MenuCarousel";
 import InstagramCarousel from "@/components/InstagramCarousel";
+import HeroSlideshow from "@/components/HeroSlideshow";
+import InstagramGallery from "@/components/InstagramGallery";
 
 export default function Home() {
   const { language, setLanguage, t } = useLanguage();
