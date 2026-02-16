@@ -24,6 +24,7 @@ export default function MenuCarousel({ items, t }: MenuCarouselProps) {
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [autoPlay, setAutoPlay] = useState(true);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -42,8 +43,41 @@ export default function MenuCarousel({ items, t }: MenuCarouselProps) {
     };
   }, [emblaApi]);
 
-  const scrollPrev = () => emblaApi?.scrollPrev();
-  const scrollNext = () => emblaApi?.scrollNext();
+  // Auto-play effect
+  useEffect(() => {
+    if (!autoPlay || !emblaApi) return;
+
+    const intervalId = setInterval(() => {
+      if (emblaApi.canScrollNext()) {
+        emblaApi.scrollNext();
+      } else {
+        emblaApi.scrollToIndex(0);
+      }
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [autoPlay, emblaApi]);
+
+  const scrollPrev = () => {
+    emblaApi?.scrollPrev();
+    setAutoPlay(false);
+    // Resume auto-play after 5 seconds of inactivity
+    setTimeout(() => setAutoPlay(true), 5000);
+  };
+
+  const scrollNext = () => {
+    emblaApi?.scrollNext();
+    setAutoPlay(false);
+    // Resume auto-play after 5 seconds of inactivity
+    setTimeout(() => setAutoPlay(true), 5000);
+  };
+
+  const goToSlide = (index: number) => {
+    emblaApi?.scrollToIndex(index);
+    setAutoPlay(false);
+    // Resume auto-play after 5 seconds of inactivity
+    setTimeout(() => setAutoPlay(true), 5000);
+  };
 
   return (
     <div className="relative">
@@ -107,7 +141,7 @@ export default function MenuCarousel({ items, t }: MenuCarouselProps) {
         {items.map((_, index) => (
           <button
             key={index}
-            onClick={() => emblaApi?.scrollToIndex(index)}
+            onClick={() => goToSlide(index)}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${
               index === selectedIndex ? 'bg-primary w-8' : 'bg-primary/30 hover:bg-primary/50'
             }`}

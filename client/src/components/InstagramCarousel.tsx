@@ -59,20 +59,20 @@ export default function InstagramCarousel({ items, instagramUrl }: InstagramCaro
   const currentItem = items[currentIndex];
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto">
+    <div className="relative w-full max-w-2xl mx-auto">
       {/* Main Carousel */}
       <div className="relative overflow-hidden rounded-lg md:rounded-xl aspect-square bg-muted group">
         {/* Follow Button Overlay */}
-        <div className="absolute top-0 left-0 right-0 z-20 p-4 md:p-6 flex justify-between items-start">
-          <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full">
-            <Instagram className="w-5 h-5 text-white" />
-            <span className="text-white font-semibold text-sm md:text-base">@kings_code_burger</span>
+        <div className="absolute top-0 left-0 right-0 z-20 p-3 md:p-4 flex justify-between items-start">
+          <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">
+            <Instagram className="w-4 h-4 text-white" />
+            <span className="text-white font-semibold text-xs md:text-sm">@kings_code_burger</span>
           </div>
           <a
             href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-full font-semibold text-sm md:text-base transition-all duration-300 transform hover:scale-105"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-3 py-1.5 rounded-full font-semibold text-xs md:text-sm transition-all duration-300 transform hover:scale-105"
           >
             Follow
           </a>
@@ -109,51 +109,51 @@ export default function InstagramCarousel({ items, instagramUrl }: InstagramCaro
         {/* Overlay on Hover */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300" />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <Heart className="w-12 h-12 md:w-16 md:h-16 text-white" />
+          <Heart className="w-10 h-10 md:w-12 md:h-12 text-white" />
         </div>
 
         {/* Navigation Buttons */}
         <button
           onClick={goToPrevious}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white transition-all duration-300 transform hover:scale-110"
+          className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 p-1.5 md:p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white transition-all duration-300 transform hover:scale-110"
         >
-          <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
+          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
         </button>
 
         <button
           onClick={goToNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white transition-all duration-300 transform hover:scale-110"
+          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 p-1.5 md:p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white transition-all duration-300 transform hover:scale-110"
         >
-          <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
+          <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
         </button>
 
         {/* Item Counter */}
-        <div className="absolute bottom-4 right-4 z-10 bg-black/40 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">
+        <div className="absolute bottom-3 right-3 md:bottom-4 md:right-4 z-10 bg-black/40 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs md:text-sm font-semibold">
           {currentIndex + 1} / {items.length}
         </div>
       </div>
 
       {/* Dot Indicators */}
-      <div className="flex justify-center gap-2 mt-6 md:mt-8 flex-wrap">
+      <div className="flex justify-center gap-1.5 md:gap-2 mt-4 md:mt-6 flex-wrap">
         {items.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
             className={`transition-all duration-300 rounded-full ${
               index === currentIndex
-                ? 'bg-primary w-3 h-3 md:w-4 md:h-4'
-                : 'bg-primary/30 hover:bg-primary/50 w-2 h-2 md:w-3 md:h-3'
+                ? 'bg-primary w-2 h-2 md:w-3 md:h-3'
+                : 'bg-primary/30 hover:bg-primary/50 w-1.5 h-1.5 md:w-2 md:h-2'
             }`}
           />
         ))}
       </div>
 
       {/* View on Instagram Button */}
-      <div className="text-center mt-6 md:mt-8">
+      <div className="text-center mt-4 md:mt-6">
         <Button
           asChild
-          size="lg"
-          className="bg-primary hover:bg-primary/90 text-sm md:text-base"
+          size="sm"
+          className="bg-primary hover:bg-primary/90 text-xs md:text-sm"
         >
           <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
             View on Instagram
