@@ -360,24 +360,90 @@ export default function Home() {
                 </div>
               </a>
               
-              {/* Placeholder items for Instagram photos */}
-              {[1, 2, 3, 4, 5, 6].map((item) => (
-                <a
-                  key={item}
-                  href="https://www.instagram.com/kings_code_burger/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative overflow-hidden rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
-                    <Heart className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-100 flex items-center justify-center text-gray-400">
-                    <span className="text-sm font-medium">Photo {item}</span>
-                  </div>
-                </a>
-              ))}
+              {/* Instagram Feed Items - Images and Videos */}
+              {/* Photo 1 */}
+              <a
+                href="https://www.instagram.com/kings_code_burger/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
+              >
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/KkkfCfITosPVCBCR.jpeg" alt="Instagram Photo 1" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Heart className="w-8 h-8 text-white" />
+                </div>
+              </a>
+              
+              {/* Photo 2 */}
+              <a
+                href="https://www.instagram.com/kings_code_burger/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
+              >
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/hufNShsLtsrzCKvw.jpeg" alt="Instagram Photo 2" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Heart className="w-8 h-8 text-white" />
+                </div>
+              </a>
+              
+              {/* Photo 3 */}
+              <a
+                href="https://www.instagram.com/kings_code_burger/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
+              >
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/owUfLkcHOrGcviBx.jpeg" alt="Instagram Photo 3" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Heart className="w-8 h-8 text-white" />
+                </div>
+              </a>
+              
+              {/* Video 1 */}
+              <a
+                href="https://www.instagram.com/kings_code_burger/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
+              >
+                <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/mibySkkqWaLSHakX.mp4" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Heart className="w-8 h-8 text-white" />
+                </div>
+              </a>
+              
+              {/* Video 2 */}
+              <a
+                href="https://www.instagram.com/kings_code_burger/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
+              >
+                <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/QdkNFJAnKspntUZk.mp4" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Heart className="w-8 h-8 text-white" />
+                </div>
+              </a>
+              
+              {/* Video 3 */}
+              <a
+                href="https://www.instagram.com/kings_code_burger/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
+              >
+                <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/XPuDcvHvTTCwzrhw.mp4" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Heart className="w-8 h-8 text-white" />
+                </div>
+              </a>
             </div>
             <div className="text-center mt-12">
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
