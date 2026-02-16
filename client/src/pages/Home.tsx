@@ -122,39 +122,39 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b-2 border-primary card-shadow">
-        <div className="container flex items-center justify-between py-3">
-          <h1 className="text-2xl font-bold text-primary tracking-wider">KING'S CODE</h1>
-          <div className="hidden md:flex gap-8 items-center">
-            <a href="#philosophy" className="text-xs font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
+        <div className="container flex items-center justify-between py-2 md:py-3">
+          <h1 className="text-lg md:text-2xl font-bold text-primary tracking-wider">KING'S CODE</h1>
+          <div className="hidden md:flex gap-4 lg:gap-8 items-center">
+            <a href="#philosophy" className="text-xs lg:text-sm font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
               {t('nav.philosophy')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="#menu" className="text-xs font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
+            <a href="#menu" className="text-xs lg:text-sm font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
               {t('nav.menu')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="#reviews" className="text-xs font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
+            <a href="#reviews" className="text-xs lg:text-sm font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
               {t('nav.reviews')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="#instagram" className="text-xs font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
+            <a href="#instagram" className="text-xs lg:text-sm font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
               INSTAGRAM
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="#access" className="text-xs font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
+            <a href="#access" className="text-xs lg:text-sm font-semibold text-foreground hover:text-primary transition-all duration-300 relative group">
               {t('nav.access')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </a>
           </div>
           
-          <div className="flex gap-4 items-center">
+          <div className="flex gap-2 md:gap-4 items-center">
             {/* Social Media Links */}
-            <div className="flex gap-3">
+            <div className="flex gap-2 md:gap-3">
               <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-all duration-300 transform hover:scale-110">
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-4 h-4 md:w-5 md:h-5" />
               </a>
               <a href={socialLinks.googleReviews} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-all duration-300 transform hover:scale-110">
-                <Globe className="w-5 h-5" />
+                <Globe className="w-4 h-4 md:w-5 md:h-5" />
               </a>
             </div>
             
@@ -162,13 +162,13 @@ export default function Home() {
             <div className="flex gap-1 bg-secondary rounded-lg p-1">
               <button
                 onClick={() => setLanguage('ja')}
-                className={`px-3 py-1 text-xs font-bold rounded transition-all duration-300 ${language === 'ja' ? 'bg-primary text-primary-foreground shadow-md' : 'text-foreground hover:text-primary'}`}
+                className={`px-2 md:px-3 py-1 text-xs font-bold rounded transition-all duration-300 ${language === 'ja' ? 'bg-primary text-primary-foreground shadow-md' : 'text-foreground hover:text-primary'}`}
               >
                 日本語
               </button>
               <button
                 onClick={() => setLanguage('en')}
-                className={`px-3 py-1 text-xs font-bold rounded transition-all duration-300 ${language === 'en' ? 'bg-primary text-primary-foreground shadow-md' : 'text-foreground hover:text-primary'}`}
+                className={`px-2 md:px-3 py-1 text-xs font-bold rounded transition-all duration-300 ${language === 'en' ? 'bg-primary text-primary-foreground shadow-md' : 'text-foreground hover:text-primary'}`}
               >
                 EN
               </button>
@@ -178,7 +178,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      <section className="relative min-h-screen md:min-h-[calc(100vh-60px)] flex items-center justify-center overflow-hidden pt-20 md:pt-16">
         <div 
           className="absolute inset-0 z-0"
           style={{
@@ -190,25 +190,25 @@ export default function Home() {
         />
         <div className="container relative z-10 text-center">
           <div className="animate-fade-in-up">
-            <h2 className="text-7xl md:text-9xl font-bold mb-4 text-white">
+            <h2 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold mb-2 md:mb-4 text-white">
               {t('hero.title1')}<br />
               <span className="text-primary accent-line inline-block">{t('hero.title2')}</span><br />
               {t('hero.title3')}
             </h2>
-            <p className="text-xl md:text-2xl text-white mb-6 max-w-3xl mx-auto whitespace-pre-line">
+            <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-white mb-4 md:mb-6 max-w-3xl mx-auto whitespace-pre-line">
               {t('hero.subtitle')}
             </p>
-            <div className="flex items-center justify-center gap-2 mb-8">
+            <div className="flex items-center justify-center gap-2 mb-4 md:mb-8">
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                  <Star key={i} className="w-3 h-3 md:w-5 md:h-5 fill-primary text-primary" />
                 ))}
               </div>
-              <span className="text-lg font-bold text-white">4.7 / 5.0</span>
+              <span className="text-sm md:text-lg font-bold text-white">4.7 / 5.0</span>
             </div>
             <Button 
               size="lg" 
-              className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6 font-bold"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 text-sm md:text-lg px-6 md:px-8 py-4 md:py-6 font-bold"
               onClick={scrollToMenu}
             >
               {t('hero.button')}
@@ -410,7 +410,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="group relative overflow-hidden rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
               >
-                <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/mibySkkqWaLSHakX.mp4" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/mibySkkqWaLSHakX.mp4" autoPlay loop muted className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                   <Heart className="w-8 h-8 text-white" />
@@ -424,7 +424,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="group relative overflow-hidden rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
               >
-                <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/QdkNFJAnKspntUZk.mp4" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/QdkNFJAnKspntUZk.mp4" autoPlay loop muted className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                   <Heart className="w-8 h-8 text-white" />
@@ -438,7 +438,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="group relative overflow-hidden rounded-lg aspect-square bg-muted hover:shadow-lg transition-shadow"
               >
-                <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/XPuDcvHvTTCwzrhw.mp4" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <video src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/XPuDcvHvTTCwzrhw.mp4" autoPlay loop muted className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                   <Heart className="w-8 h-8 text-white" />
