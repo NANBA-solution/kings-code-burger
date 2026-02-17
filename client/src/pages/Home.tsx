@@ -296,7 +296,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <h3 className="text-3xl font-bold mb-4 text-primary">{t('philosophy.house')}</h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed" style={{fontWeight: '200'}}>
                   {t('philosophy.house_desc')}
                 </p>
               </div>
