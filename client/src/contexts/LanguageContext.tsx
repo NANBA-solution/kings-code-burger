@@ -66,7 +66,7 @@ const translations = {
     'access.phone': 'PHONE',
     'access.phone_value': '080-1520-0694',
     'access.hours': 'HOURS',
-    'access.hours_weekday': '平日: 13:00-20:00',
+    'access.hours_weekday': '平日: 13:00-15:00',
     'access.hours_weekend': '週末: 11:00-20:00',
     'access.map': 'Google Mapsで見る',
     'access.ubereats': 'Uber Eatsで注文',
