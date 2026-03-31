@@ -130,7 +130,7 @@ const translations = {
     'access.phone': 'PHONE',
     'access.phone_value': '080-1520-0694',
     'access.hours': 'HOURS',
-    'access.hours_weekday': 'Weekday: 13:00-20:00',
+    'access.hours_weekday': 'Weekday: 13:00-15:00',
     'access.hours_weekend': 'Weekend: 11:00-20:00',
     'access.map': 'View on Google Maps',
     'access.ubereats': 'Order on Uber Eats',
