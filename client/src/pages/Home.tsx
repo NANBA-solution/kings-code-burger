@@ -6,9 +6,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { Star, MapPin, Phone, Clock, Instagram, Globe, Heart } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Mascot } from "@/components/Mascot";
+import { publicAsset } from "@/lib/assets";
 
 /** 初期ヘッダー画像（CDNから取得した原本をローカル保存） */
-const HERO_BG = "/images/hero-original.webp";
+const HERO_BG = publicAsset("images/hero-original.webp");
 
 const MARQUEE_ITEMS = [
   "SMASH BURGER",
@@ -329,7 +330,7 @@ export default function Home() {
               <span className="kcb-marquee__item">{item} •</span>
               {i % 2 === 0 && (
                 <img
-                  src="/images/invader-mascot.png"
+                  src={publicAsset("images/invader-mascot.png")}
                   alt=""
                   aria-hidden
                   className="kcb-mascot kcb-mascot--xs kcb-marquee__mascot"

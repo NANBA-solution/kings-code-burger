@@ -1,4 +1,6 @@
-const MASCOT_SRC = "/images/invader-mascot.png";
+import { publicAsset } from "@/lib/assets";
+
+const MASCOT_SRC = publicAsset("images/invader-mascot.png");
 
 type MascotSize = "xs" | "sm" | "md" | "lg" | "xl";
 
