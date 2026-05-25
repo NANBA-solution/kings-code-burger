@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./styles/site.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -49,43 +50,43 @@ Design Philosophy: Clean Modern Burger Shop
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --font-display: 'Bebas Neue', sans-serif;
-  --font-body: 'Roboto', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
 }
 
 :root {
-  --primary: oklch(0.65 0.22 142);
-  --primary-foreground: oklch(1 0 0);
-  --sidebar-primary: oklch(0.65 0.22 142);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --chart-1: oklch(0.65 0.22 142);
-  --chart-2: oklch(0.55 0.18 142);
-  --chart-3: oklch(0.45 0.15 142);
-  --chart-4: oklch(0.35 0.12 142);
-  --chart-5: oklch(0.25 0.09 142);
-  --radius: 0;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.2 0.01 0);
-  --card: oklch(0.98 0.001 0);
-  --card-foreground: oklch(0.2 0.01 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.01 0);
-  --secondary: oklch(0.95 0.001 0);
-  --secondary-foreground: oklch(0.2 0.01 0);
-  --muted: oklch(0.90 0.001 0);
-  --muted-foreground: oklch(0.5 0.01 0);
-  --accent: oklch(0.65 0.22 142);
-  --accent-foreground: oklch(1 0 0);
+  --primary: #438e44;
+  --primary-foreground: #ffffff;
+  --sidebar-primary: #438e44;
+  --sidebar-primary-foreground: #ffffff;
+  --chart-1: #438e44;
+  --chart-2: #356e36;
+  --chart-3: #52a353;
+  --chart-4: #e6f0e6;
+  --chart-5: #ffffff;
+  --radius: 0.5rem;
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --secondary: #e6f0e6;
+  --secondary-foreground: #1a1a1a;
+  --muted: #e6f0e6;
+  --muted-foreground: #5a5a5a;
+  --accent: #356e36;
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.001 0);
-  --input: oklch(0.95 0.001 0);
-  --ring: oklch(0.67 0.15 120);
-  --sidebar: oklch(1 0 0);
-  --sidebar-foreground: oklch(0.2 0.01 0);
-  --sidebar-accent: oklch(0.67 0.15 120);
-  --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.92 0.001 0);
-  --sidebar-ring: oklch(0.67 0.15 120);
+  --border: rgba(67, 142, 68, 0.25);
+  --input: #e6f0e6;
+  --ring: #438e44;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-accent: #438e44;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(67, 142, 68, 0.25);
+  --sidebar-ring: #438e44;
 }
 
 @layer base {
