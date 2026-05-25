@@ -152,7 +152,11 @@ function vitePluginManusDebugCollector(): Plugin {
 
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector()];
 
+/** GitHub Pages: https://nanba-solution.github.io/kings-code-burger/ */
+const isGitHubPages = process.env.GITHUB_PAGES === "true";
+
 export default defineConfig({
+  base: isGitHubPages ? "/kings-code-burger/" : "/",
   plugins,
   resolve: {
     alias: {
