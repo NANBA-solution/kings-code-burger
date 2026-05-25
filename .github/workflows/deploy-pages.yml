@@ -20,23 +20,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10.4.1
-
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
+
+      - name: Enable pnpm
+        run: corepack enable && corepack prepare pnpm@10.4.1 --activate
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Build for GitHub Pages
         run: pnpm run build:pages
+        env:
+          GITHUB_PAGES: "true"
 
       - name: SPA fallback for client-side routing
-        run: cp dist/public/index.html dist/public/404.html
+        run: |
+          cp dist/public/index.html dist/public/404.html
+          touch dist/public/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3
         with:
