@@ -54,14 +54,14 @@ Design Philosophy: Clean Modern Burger Shop
 }
 
 :root {
-  --primary: #438e44;
+  --primary: #00602c;
   --primary-foreground: #ffffff;
-  --sidebar-primary: #438e44;
+  --sidebar-primary: #00602c;
   --sidebar-primary-foreground: #ffffff;
-  --chart-1: #438e44;
-  --chart-2: #356e36;
-  --chart-3: #52a353;
-  --chart-4: #e6f0e6;
+  --chart-1: #00602c;
+  --chart-2: #004820;
+  --chart-3: #007a38;
+  --chart-4: #e6f2eb;
   --chart-5: #ffffff;
   --radius: 0.5rem;
   --background: #ffffff;
@@ -70,23 +70,23 @@ Design Philosophy: Clean Modern Burger Shop
   --card-foreground: #1a1a1a;
   --popover: #ffffff;
   --popover-foreground: #1a1a1a;
-  --secondary: #e6f0e6;
+  --secondary: #e6f2eb;
   --secondary-foreground: #1a1a1a;
-  --muted: #e6f0e6;
+  --muted: #e6f2eb;
   --muted-foreground: #5a5a5a;
-  --accent: #356e36;
+  --accent: #004820;
   --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: rgba(67, 142, 68, 0.25);
-  --input: #e6f0e6;
-  --ring: #438e44;
+  --border: rgba(0, 96, 44, 0.25);
+  --input: #e6f2eb;
+  --ring: #00602c;
   --sidebar: #ffffff;
   --sidebar-foreground: #1a1a1a;
-  --sidebar-accent: #438e44;
+  --sidebar-accent: #00602c;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: rgba(67, 142, 68, 0.25);
-  --sidebar-ring: #438e44;
+  --sidebar-border: rgba(0, 96, 44, 0.25);
+  --sidebar-ring: #00602c;
 }
 
 @layer base {

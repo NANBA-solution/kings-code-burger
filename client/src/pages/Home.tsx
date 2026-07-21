@@ -99,65 +99,58 @@ export default function Home() {
       nameKey: "menu.cheese_burger",
       nameJaKey: "menu.cheese_burger_ja",
       descKey: "menu.cheese_burger_desc",
-      price: "¥1,200",
-      tag: "定番",
-      image:
-        "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/zlcHmSYDrBfrZYpe.png",
+      price: "¥1,400",
+      tagKey: "menu.tag_classic",
+      image: publicAsset("images/menu/cheese-burger.png"),
     },
     {
       nameKey: "menu.double_cheese",
       nameJaKey: "menu.double_cheese_ja",
       descKey: "menu.double_cheese_desc",
-      price: "¥2,000",
-      tag: "人気NO.1",
+      price: "¥2,200",
+      tagKey: "menu.tag_popular",
       hot: true,
-      image:
-        "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/dpKaxlCQBeVpYUTZ.png",
+      image: publicAsset("images/menu/double-cheese.png"),
     },
     {
       nameKey: "menu.hot_chicken",
       nameJaKey: "menu.hot_chicken_ja",
       descKey: "menu.hot_chicken_desc",
-      price: "¥1,200",
-      tag: "本格派",
-      image:
-        "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/hRrjhAGqvgbrygvr.png",
+      price: "¥1,400",
+      tagKey: "menu.tag_authentic",
+      image: publicAsset("images/menu/hot-chicken.png"),
     },
     {
       nameKey: "menu.hamburger",
       nameJaKey: "menu.hamburger_ja",
       descKey: "menu.hamburger_desc",
-      price: "¥1,300",
-      tag: "",
-      image:
-        "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/EEDUcZlgKjPSrUdm.png",
+      price: "¥1,500",
+      tagKey: "",
+      image: publicAsset("images/menu/hamburger.png"),
     },
     {
       nameKey: "menu.bacon_lettuce",
       nameJaKey: "menu.bacon_lettuce_ja",
       descKey: "menu.bacon_lettuce_desc",
-      price: "¥1,400",
-      tag: "",
-      image:
-        "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/epKmYfJppyEWlUwe.png",
+      price: "¥1,600",
+      tagKey: "",
+      image: publicAsset("images/menu/bacon-lettuce.png"),
     },
     {
       nameKey: "menu.double_burger",
       nameJaKey: "menu.double_burger_ja",
       descKey: "menu.double_burger_desc",
-      price: "¥2,000",
-      tag: "",
-      image:
-        "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/ZzUSZGRmMVxPyenB.png",
+      price: "¥2,200",
+      tagKey: "",
+      image: publicAsset("images/menu/double-burger.png"),
     },
     {
       nameKey: "menu.thick_bacon",
       nameJaKey: "menu.thick_bacon_ja",
       descKey: "menu.thick_bacon_desc",
-      price: "¥1,800",
-      tag: "",
-      image:
-        "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/dPHfmSzlNWjndvOn.png",
+      price: "¥2,000",
+      tagKey: "",
+      image: publicAsset("images/menu/thick-bacon.png"),
     },
   ];
 
@@ -190,7 +183,7 @@ export default function Home() {
   const philosophyItems = [
     { icon: MapPin, titleKey: "philosophy.beef", descKey: "philosophy.beef_desc" },
     {
-      icon: null,
+      icon: null as null,
       titleKey: "philosophy.smash",
       descKey: "philosophy.smash_desc",
       svg: (
@@ -200,7 +193,7 @@ export default function Home() {
       ),
     },
     {
-      icon: null,
+      icon: null as null,
       titleKey: "philosophy.house",
       descKey: "philosophy.house_desc",
       svg: (
@@ -309,36 +302,42 @@ export default function Home() {
             <span className="kcb-hero__rating-text">4.7 / 5.0</span>
           </div>
 
-          <button type="button" className="kcb-hero__cta kcb-cta-mascot-row" onClick={scrollToMenu}>
-            <Mascot size="xs" className="!w-7 !h-7 sm:!w-8 sm:!h-8" />
+          <button type="button" className="kcb-hero__cta" onClick={scrollToMenu}>
             {t("hero.button")}
-            <Mascot size="xs" className="!w-7 !h-7 sm:!w-8 sm:!h-8 scale-x-[-1]" />
           </button>
-        </div>
 
-        <div className="kcb-hero__scroll-hint">
-          <span>SCROLL</span>
-          <div className="kcb-hero__scroll-line" />
+          <div className="kcb-hero__scroll-hint" aria-hidden="true">
+            <span>SCROLL</span>
+            <div className="kcb-hero__scroll-line" />
+          </div>
         </div>
       </section>
 
       {/* Marquee */}
       <div className="kcb-marquee" aria-hidden="true">
-        <div className="kcb-marquee__track">
-          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
-            <React.Fragment key={i}>
-              <span className="kcb-marquee__item">{item} •</span>
-              {i % 2 === 0 && (
-                <img
-                  src={publicAsset("images/invader-mascot.png")}
-                  alt=""
-                  aria-hidden
-                  className="kcb-mascot kcb-mascot--xs kcb-marquee__mascot"
-                />
-              )}
-            </React.Fragment>
-          ))}
-        </div>
+        {[false, true].map((reverse) => (
+          <div
+            key={reverse ? "rev" : "fwd"}
+            className={`kcb-marquee__track${reverse ? " kcb-marquee__track--reverse" : ""}`}
+          >
+            {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
+              <React.Fragment key={`${reverse ? "r" : "f"}-${i}`}>
+                <span className="kcb-marquee__item">
+                  <span className="kcb-marquee__text">{item}</span>
+                  <span className="kcb-marquee__dot" />
+                </span>
+                {i % 2 === 0 && (
+                  <img
+                    src={publicAsset("images/invader-mascot.png")}
+                    alt=""
+                    aria-hidden
+                    className="kcb-mascot kcb-mascot--xs kcb-marquee__mascot"
+                  />
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        ))}
       </div>
 
       {/* Philosophy */}
@@ -360,13 +359,8 @@ export default function Home() {
                 key={item.titleKey}
                 className={`kcb-philosophy-card kcb-reveal kcb-reveal-delay-${index + 1}`}
               >
-                {index === 1 && <Mascot size="sm" className="kcb-philosophy-card__mascot" />}
                 <div className="kcb-philosophy-card__icon">
-                  {item.icon ? (
-                    <item.icon />
-                  ) : (
-                    item.svg
-                  )}
+                  {item.icon ? <item.icon /> : item.svg}
                 </div>
                 <h3 className="kcb-philosophy-card__title">{t(item.titleKey)}</h3>
                 <p className="kcb-philosophy-card__text">{t(item.descKey)}</p>
@@ -384,9 +378,7 @@ export default function Home() {
               <Mascot size="sm" />
             </div>
             <span className="kcb-section__label">ORDER NOW</span>
-            <h2 className="kcb-section__title">
-              {t("menu.title")}
-            </h2>
+            <h2 className="kcb-section__title">{t("menu.title")}</h2>
             <p className="kcb-section__subtitle">{t("menu.subtitle")}</p>
             <div className="kcb-section__divider" />
           </header>
@@ -404,11 +396,11 @@ export default function Home() {
                     className="kcb-menu-card__image"
                     loading="lazy"
                   />
-                  {item.tag && (
+                  {item.tagKey && (
                     <span
                       className={`kcb-menu-card__tag ${item.hot ? "kcb-menu-card__tag--hot" : ""}`}
                     >
-                      {item.tag}
+                      {t(item.tagKey)}
                     </span>
                   )}
                 </div>
