@@ -1,6 +1,6 @@
 import { publicAsset } from "@/lib/assets";
 
-const MASCOT_SRC = publicAsset("images/invader-mascot.png");
+const LOGO_SRC = publicAsset("images/geezer-logo.png");
 
 type MascotSize = "xs" | "sm" | "md" | "lg" | "xl";
 
@@ -13,9 +13,8 @@ type MascotProps = {
 export function Mascot({ size = "md", className = "", animated = false }: MascotProps) {
   return (
     <img
-      src={MASCOT_SRC}
-      alt=""
-      aria-hidden="true"
+      src={LOGO_SRC}
+      alt="geezer"
       className={[
         "kcb-mascot",
         `kcb-mascot--${size}`,

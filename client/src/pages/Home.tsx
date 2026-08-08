@@ -15,7 +15,7 @@ const MARQUEE_ITEMS = [
   "SMASH BURGER",
   "100% AUSSIE BEEF",
   "OSAKA",
-  "KING'S CODE",
+  "geezer",
   "JUICY",
   "CRISPY",
 ];
@@ -27,7 +27,7 @@ export default function Home() {
 
   useEffect(() => {
     if (language === "ja") {
-      document.title = "King's Code Burger | 大阪のスマッシュバーガー専門店";
+      document.title = "geezer | 大阪のスマッシュバーガー専門店";
       document
         .querySelector('meta[name="description"]')
         ?.setAttribute(
@@ -35,7 +35,7 @@ export default function Home() {
           "大阪のスマッシュバーガー専門店。100%オージービーフを高温で焼き上げた、外はカリッ、中はジュワッなハンバーガー。Uber Eats対応。"
         );
     } else {
-      document.title = "King's Code Burger | Osaka's Best Smash Burger";
+      document.title = "geezer | Osaka's Best Smash Burger";
       document
         .querySelector('meta[name="description"]')
         ?.setAttribute(
@@ -155,11 +155,11 @@ export default function Home() {
   ];
 
   const socialLinks = {
-    instagram: "https://www.instagram.com/kings_code_burger",
+    instagram: "https://www.instagram.com/geezer.smash.burger?utm_source=qr",
     googleReviews:
-      "https://www.google.com/maps/place/King's+Code+Burger/@34.6834,135.5085,15z",
+      "https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E8%A5%BF%E5%BF%83%E6%96%8E%E6%A9%8B2-9-5%20%E4%B8%89%E3%83%83%E5%AF%BA%E4%BC%9A%E9%A4%A81F",
     googleNavigation:
-      "https://www.google.com/gasearch?q=king's%20code%20burger%20%E3%82%AA%E3%83%BC%E3%83%8A%E3%83%BC%E6%8F%90%E4%BE%9B&source=sh/x/gs/m2/5#lpstate=pid:1120676595491597304",
+      "https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E8%A5%BF%E5%BF%83%E6%96%8E%E6%A9%8B2-9-5%20%E4%B8%89%E3%83%83%E5%AF%BA%E4%BC%9A%E9%A4%A81F",
   };
 
   const reviews = [
@@ -209,9 +209,8 @@ export default function Home() {
       {/* Navigation */}
       <nav className={`kcb-nav ${navScrolled ? "scrolled" : ""}`}>
         <div className="container flex items-center justify-between py-3 md:py-4">
-          <a href="#" className="kcb-nav__brand kcb-nav__logo">
-            <Mascot size="sm" />
-            KING&apos;S CODE
+          <a href="#" className="kcb-nav__brand kcb-nav__logo" aria-label="geezer">
+            <Mascot size="md" className="kcb-nav__logo-img" />
           </a>
 
           <div className="hidden md:flex gap-6 lg:gap-10 items-center">
@@ -279,7 +278,7 @@ export default function Home() {
             filter: "brightness(0.5)",
           }}
           role="img"
-          aria-label="King's Code Burger"
+          aria-label="geezer"
         />
 
         <div className="container kcb-hero__content">
@@ -328,7 +327,7 @@ export default function Home() {
                 </span>
                 {i % 2 === 0 && (
                   <img
-                    src={publicAsset("images/invader-mascot.png")}
+                    src={publicAsset("images/geezer-logo.png")}
                     alt=""
                     aria-hidden
                     className="kcb-mascot kcb-mascot--xs kcb-marquee__mascot"
@@ -468,7 +467,7 @@ export default function Home() {
             <div className="kcb-section__header-mascot">
               <Mascot size="md" />
             </div>
-            <span className="kcb-section__label">@kings_code_burger</span>
+            <span className="kcb-section__label">@geezer.smash.burger</span>
             <h2 className="kcb-section__title">
               INSTAGRAM
             </h2>
@@ -489,7 +488,7 @@ export default function Home() {
                 <div>
                   <Instagram className="w-10 h-10 mx-auto mb-3" />
                   <p className="font-bold text-lg">Follow us</p>
-                  <p className="text-sm opacity-80">@kings_code_burger</p>
+                  <p className="text-sm opacity-80">@geezer.smash.burger</p>
                 </div>
               </a>
 
@@ -590,7 +589,7 @@ export default function Home() {
 
               <div className="space-y-3 mt-2">
                 <a
-                  href="https://maps.app.goo.gl/tP5wwysiDmxfsXtYA?g_st=ic"
+                  href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E8%A5%BF%E5%BF%83%E6%96%8E%E6%A9%8B2-9-5%20%E4%B8%89%E3%83%83%E5%AF%BA%E4%BC%9A%E9%A4%A81F"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="kcb-btn-primary"
@@ -651,18 +650,15 @@ export default function Home() {
         <div className="container relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="kcb-footer__brand">
-              <Mascot size="lg" animated />
-              <div>
-                <h3 className="kcb-footer__title">{t("footer.title")}</h3>
-                <p className="opacity-60">{t("footer.subtitle")}</p>
-              </div>
+              <Mascot size="xl" animated className="kcb-footer__logo" />
+              <p className="opacity-60">{t("footer.subtitle")}</p>
             </div>
             <div className="kcb-footer__social flex gap-6">
               <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">
                 <Instagram className="w-6 h-6" />
               </a>
               <a
-                href="https://maps.app.goo.gl/tP5wwysiDmxfsXtYA?g_st=ic"
+                href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E8%A5%BF%E5%BF%83%E6%96%8E%E6%A9%8B2-9-5%20%E4%B8%89%E3%83%83%E5%AF%BA%E4%BC%9A%E9%A4%A81F"
                 target="_blank"
                 rel="noopener noreferrer"
               >

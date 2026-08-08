@@ -1209,7 +1209,8 @@ html {
 .kcb-mascot {
   display: block;
   object-fit: contain;
-  background: transparent;
+  background: #fff;
+  border-radius: 0.5rem;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   flex-shrink: 0;
@@ -1218,24 +1219,36 @@ html {
 }
 
 .kcb-mascot--xs {
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
 }
 .kcb-mascot--sm {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
 }
 .kcb-mascot--md {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
 }
 .kcb-mascot--lg {
-  width: 80px;
-  height: 80px;
+  width: 96px;
+  height: 96px;
 }
 .kcb-mascot--xl {
-  width: 120px;
+  width: 140px;
+  height: 140px;
+}
+
+.kcb-nav__logo-img {
+  width: auto;
+  height: 52px;
+  max-width: 160px;
+}
+
+.kcb-footer__logo {
+  width: auto;
   height: 120px;
+  max-width: 200px;
 }
 
 .kcb-mascot--float {
