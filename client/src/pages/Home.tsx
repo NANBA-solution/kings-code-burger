@@ -16,6 +16,8 @@ const MARQUEE_ITEMS = [
   "100% AUSSIE BEEF",
   "OSAKA",
   "geezer",
+  "SHINSAIBASHI",
+  "NO COMPROMISE",
   "JUICY",
   "CRISPY",
 ];
@@ -24,6 +26,7 @@ export default function Home() {
   const { language, setLanguage, t } = useLanguage();
   const instagramGridRef = useRef<HTMLDivElement>(null);
   const [navScrolled, setNavScrolled] = useState(false);
+  const [cursor, setCursor] = useState({ x: -200, y: -200 });
 
   useEffect(() => {
     if (language === "ja") {
@@ -32,7 +35,7 @@ export default function Home() {
         .querySelector('meta[name="description"]')
         ?.setAttribute(
           "content",
-          "大阪のスマッシュバーガー専門店。100%オージービーフを高温で焼き上げた、外はカリッ、中はジュワッなハンバーガー。Uber Eats対応。"
+          "geezerは心斎橋・三ッ寺会館1Fへ移転準備中。南森町から移転のため一時休業。オープン情報はInstagramへ。"
         );
     } else {
       document.title = "geezer | Osaka's Best Smash Burger";
@@ -40,16 +43,30 @@ export default function Home() {
         .querySelector('meta[name="description"]')
         ?.setAttribute(
           "content",
-          "Osaka's best smash burger restaurant. 100% Australian beef smashed at high heat. Crispy outside, juicy inside. Order on Uber Eats."
+          "geezer is relocating to Mitsutera Kaikan 1F, Shinsaibashi. Temporarily closed. Follow Instagram for the opening date."
         );
     }
   }, [language]);
 
   useEffect(() => {
-    const onScroll = () => setNavScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setNavScrolled(window.scrollY > 40);
+      document.documentElement.style.setProperty(
+        "--hero-shift",
+        `${Math.min(window.scrollY, 700) * 0.28}px`
+      );
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const fine = window.matchMedia("(pointer: fine)").matches;
+    if (!fine) return;
+    const onMove = (e: MouseEvent) => setCursor({ x: e.clientX, y: e.clientY });
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
   useEffect(() => {
@@ -68,8 +85,8 @@ export default function Home() {
     return () => observer.disconnect();
   }, [language]);
 
-  const scrollToMenu = () => {
-    document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToAccess = () => {
+    document.getElementById("access")?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -206,6 +223,11 @@ export default function Home() {
 
   return (
     <div className="kcb-site min-h-screen bg-white">
+      <div
+        className="kcb-cursor"
+        aria-hidden="true"
+        style={{ left: cursor.x, top: cursor.y }}
+      />
       {/* Navigation */}
       <nav className={`kcb-nav ${navScrolled ? "scrolled" : ""}`}>
         <div className="container flex items-center justify-between py-3 md:py-4">
@@ -270,38 +292,30 @@ export default function Home() {
       {/* Hero — 初期と同じ backgroundImage + brightness(0.5) */}
       <section className="kcb-hero">
         <div
-          className="absolute inset-0 z-0"
+          className="kcb-hero__bg absolute inset-0 z-0"
           style={{
             backgroundImage: `url('${HERO_BG}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            filter: "brightness(0.5)",
           }}
           role="img"
           aria-label="geezer"
         />
 
         <div className="container kcb-hero__content">
+          <p className="kcb-hero__kicker">{t("hero.kicker")}</p>
           <h1 className="kcb-hero__title">
-            {t("hero.title1")}
-            <br />
-            <span className="text-primary accent-line inline-block">{t("hero.title2")}</span>
-            <br />
-            {t("hero.title3")}
+            <span className="kcb-hero__line kcb-hero__line--1">{t("hero.title1")}</span>
+            <span className="kcb-hero__line kcb-hero__line--2 text-primary accent-line inline-block">
+              {t("hero.title2")}
+            </span>
+            <span className="kcb-hero__line kcb-hero__line--3">{t("hero.title3")}</span>
           </h1>
 
           <p className="kcb-hero__subtitle">{t("hero.subtitle")}</p>
+          <p className="kcb-hero__tagline">{t("hero.tagline")}</p>
 
-          <div className="kcb-hero__rating">
-            <div className="kcb-hero__stars">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 md:w-5 md:h-5" />
-              ))}
-            </div>
-            <span className="kcb-hero__rating-text">4.7 / 5.0</span>
-          </div>
-
-          <button type="button" className="kcb-hero__cta" onClick={scrollToMenu}>
+          <button type="button" className="kcb-hero__cta" onClick={scrollToAccess}>
             {t("hero.button")}
           </button>
 
@@ -348,7 +362,11 @@ export default function Home() {
             </div>
             <span className="kcb-section__label">OUR STORY</span>
             <h2 className="kcb-section__title">{t("philosophy.title")}</h2>
-            <p className="kcb-section__subtitle">{t("philosophy.subtitle")}</p>
+            <p className="kcb-manifesto__headline">{t("philosophy.headline")}</p>
+            <p className="kcb-manifesto__pillars">{t("philosophy.pillars")}</p>
+            <p className="kcb-manifesto__body">{t("philosophy.body")}</p>
+            <p className="kcb-manifesto__closer">{t("philosophy.closer")}</p>
+            <p className="kcb-manifesto__tagline">{t("hero.tagline")}</p>
             <div className="kcb-section__divider" />
           </header>
 
@@ -483,7 +501,7 @@ export default function Home() {
                 href={socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="kcb-instagram-item kcb-instagram-follow hidden md:flex"
+                className="kcb-instagram-item kcb-instagram-follow hidden md:flex kcb-reveal"
               >
                 <div>
                   <Instagram className="w-10 h-10 mx-auto mb-3" />
@@ -502,7 +520,7 @@ export default function Home() {
                   href={socialLinks.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`kcb-instagram-item ${i === 2 ? "hidden md:block" : ""}`}
+                  className={`kcb-instagram-item kcb-reveal kcb-reveal-delay-${(i % 3) + 1} ${i === 2 ? "hidden md:block" : ""}`}
                 >
                   <img src={src} alt={`Instagram ${i + 1}`} loading="lazy" />
                   <div className="kcb-instagram-item__overlay">
@@ -521,7 +539,7 @@ export default function Home() {
                   href={socialLinks.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`kcb-instagram-item ${i === 2 ? "hidden md:block" : ""}`}
+                  className={`kcb-instagram-item kcb-reveal kcb-reveal-delay-${(i % 3) + 1} ${i === 2 ? "hidden md:block" : ""}`}
                 >
                   <video src={src} loop muted playsInline />
                   <div className="kcb-instagram-item__overlay">
@@ -632,7 +650,7 @@ export default function Home() {
               </div>
 
               <a
-                href="https://www.ubereats.com/jp/store/%E3%82%AD%E3%83%B3%E3%82%AF%E3%82%B9-%E3%82%B3%E3%83%BC%E3%83%88-%E3%83%8F%E3%83%B3%E3%83%8F%E3%83%BC%E3%82%AB%E3%83%BC-kings-code-hamburger/tLo6VIseXdufF6wzpPTOFQ?srsltid=AfmBOoo0NBfp8xo0HDSx_PQfkc39X_5Ibcv4AbyGT8R5c9vV2qXxFSI-"
+                href={socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="kcb-btn-primary mt-4"
@@ -645,7 +663,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="kcb-footer">
+      <footer className="kcb-footer kcb-reveal">
         <div className="kcb-footer__glow" />
         <div className="container relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
@@ -664,11 +682,7 @@ export default function Home() {
               >
                 <MapPin className="w-6 h-6" />
               </a>
-              <a
-                href="https://www.ubereats.com/jp/store/%E3%82%AD%E3%83%B3%E3%82%AF%E3%82%B9-%E3%82%B3%E3%83%BC%E3%83%88-%E3%83%8F%E3%83%B3%E3%83%8F%E3%83%BC%E3%82%AB%E3%83%BC-kings-code-hamburger/tLo6VIseXdufF6wzpPTOFQ?srsltid=AfmBOoo0NBfp8xo0HDSx_PQfkc39X_5Ibcv4AbyGT8R5c9vV2qXxFSI-"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">
                 <Globe className="w-6 h-6" />
               </a>
             </div>
