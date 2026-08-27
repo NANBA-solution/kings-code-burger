@@ -324,32 +324,46 @@ html {
   width: 100%;
 }
 
-.kcb-lang-toggle {
-  display: flex;
-  gap: 2px;
-  padding: 3px;
-  background: var(--kcb-lime-soft);
-  border: 1px solid rgba(0, 96, 44, 0.25);
-  border-radius: 8px;
+/* Language switch — JA | EN */
+.lang-switch {
+  --lang-fg: #1a1a1a;
+  --lang-active-bg: #1a1a1a;
+  --lang-active-fg: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid var(--lang-fg);
+  border-radius: 999px;
+  overflow: hidden;
 }
 
-.kcb-lang-btn {
-  padding: 0.35rem 0.75rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+.lang-switch__btn {
+  min-width: 2.75rem;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1;
   border: none;
-  border-radius: 6px;
   background: transparent;
-  color: var(--kcb-charcoal);
+  color: var(--lang-fg);
   cursor: pointer;
-  transition: all 0.3s var(--ease-out-expo);
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
-.kcb-lang-btn.active {
-  background: var(--kcb-lime);
-  color: var(--kcb-white);
-  box-shadow: 0 2px 8px rgba(0, 96, 44, 0.35);
+.lang-switch__btn.is-active {
+  background: var(--lang-active-bg);
+  color: var(--lang-active-fg);
+}
+
+.lang-switch__btn:not(.is-active):hover {
+  background: color-mix(in srgb, var(--lang-fg) 10%, transparent);
+}
+
+.lang-switch__divider {
+  width: 1.5px;
+  align-self: stretch;
+  background: var(--lang-fg);
+  opacity: 0.3;
 }
 
 .kcb-social-icon {
@@ -1547,5 +1561,580 @@ html {
   }
   .kcb-hero__bg {
     transform: none;
+  }
+}
+
+/* ── Burger ingredient pages（本サイト：白 × グリーン） ── */
+.burger-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 50% at 100% 0%, var(--kcb-lime-soft), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(0, 96, 44, 0.06), transparent 50%),
+    var(--kcb-white);
+  color: var(--kcb-black);
+  font-family: var(--font-body);
+}
+
+.burger-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 2px solid var(--kcb-lime-soft);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+}
+
+.burger-page__logo {
+  height: 2.5rem;
+  width: auto;
+}
+
+.burger-page__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.burger-page__back,
+.burger-page__qr-link {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kcb-lime-dark);
+  text-decoration: none;
+  border: 1.5px solid var(--kcb-lime);
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.burger-page__back:hover,
+.burger-page__qr-link:hover {
+  background: var(--kcb-lime);
+  color: var(--kcb-white);
+  box-shadow: 0 4px 12px rgba(0, 96, 44, 0.25);
+}
+
+.burger-page__lang {
+  flex-shrink: 0;
+}
+
+.burger-qr-print__toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.burger-page__main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.burger-detail__hero {
+  display: grid;
+  gap: 1.75rem;
+  margin-bottom: 2.75rem;
+  padding: 1.25rem;
+  background: var(--kcb-white);
+  border: 2px solid var(--kcb-lime-soft);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 768px) {
+  .burger-detail__hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    align-items: center;
+    padding: 1.5rem;
+  }
+}
+
+.burger-detail__image {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  border: 2px solid var(--kcb-lime-soft);
+  background: var(--kcb-smoke);
+}
+
+.burger-detail__tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kcb-white);
+  background: var(--kcb-lime);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+
+.burger-detail__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: 0.04em;
+  line-height: 0.95;
+  margin: 0 0 0.35rem;
+  color: var(--kcb-charcoal);
+}
+
+.burger-detail__title-ja {
+  font-size: 0.9rem;
+  color: rgba(20, 20, 20, 0.5);
+  margin: 0 0 0.75rem;
+}
+
+.burger-detail__price {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  letter-spacing: 0.04em;
+  color: var(--kcb-lime);
+  margin: 0 0 1rem;
+}
+
+.burger-detail__desc {
+  line-height: 1.75;
+  color: var(--kcb-charcoal);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.burger-detail__section {
+  margin-bottom: 2.5rem;
+}
+
+.burger-detail__section-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.5rem;
+  color: var(--kcb-lime-dark);
+}
+
+.burger-detail__section-note,
+.burger-detail__disclaimer,
+.burger-detail__qr-desc {
+  font-size: 0.85rem;
+  color: rgba(20, 20, 20, 0.55);
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+.ingredients-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.ingredients-list__item {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  padding: 0.75rem 1rem;
+  background: var(--kcb-lime-soft);
+  border-radius: 0.5rem;
+  border-left: 4px solid var(--kcb-lime);
+  color: var(--kcb-charcoal);
+}
+
+.burger-detail__allergens {
+  line-height: 1.7;
+  margin: 0;
+  padding: 1rem 1.15rem;
+  background: var(--kcb-white);
+  border: 2px solid var(--kcb-lime-soft);
+  border-radius: 0.75rem;
+  color: var(--kcb-charcoal);
+}
+
+.burger-detail__qr-box {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.35rem;
+  background: var(--kcb-white);
+  border: 2px solid var(--kcb-lime-soft);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.burger-detail__qr-url {
+  font-size: 0.75rem;
+  color: var(--kcb-charcoal);
+  word-break: break-all;
+  margin: 0;
+  max-width: 240px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.burger-page__footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.8125rem;
+  color: rgba(20, 20, 20, 0.45);
+  border-top: 2px solid var(--kcb-lime-soft);
+  background: var(--kcb-white);
+}
+
+.burger-page__not-found {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--kcb-charcoal);
+}
+
+.kcb-menu-card__ingredients-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kcb-lime);
+  text-decoration: none;
+  border-bottom: 2px solid rgba(0, 96, 44, 0.3);
+  padding-bottom: 0.15rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.kcb-menu-card__ingredients-link:hover {
+  color: var(--kcb-lime-dark);
+  border-color: var(--kcb-lime-dark);
+}
+
+/* Menu extras — Side / Drinks / Sauce */
+.kcb-menu-extra {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 4px solid var(--kcb-lime);
+}
+
+.kcb-menu-extra__header {
+  margin-bottom: 1.5rem;
+}
+
+.kcb-menu-extra__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  letter-spacing: 0.06em;
+  color: var(--kcb-lime-dark);
+  margin: 0;
+}
+
+.kcb-side-list,
+.kcb-sauce-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.kcb-side-list {
+  max-width: 720px;
+}
+
+.kcb-sauce-list {
+  max-width: 720px;
+}
+
+@media (min-width: 768px) {
+  .kcb-sauce-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+.kcb-side-item,
+.kcb-sauce-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  background: var(--kcb-white);
+  border: 2px solid var(--kcb-lime-soft);
+  border-radius: 0.75rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kcb-side-item:hover,
+.kcb-sauce-item:hover {
+  border-color: var(--kcb-lime);
+  box-shadow: var(--shadow-sm);
+}
+
+.kcb-side-item__image {
+  width: 5.5rem;
+  height: 5.5rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+  background: var(--kcb-smoke);
+}
+
+.kcb-sauce-item__image {
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+  background: var(--kcb-smoke);
+}
+
+@media (min-width: 768px) {
+  .kcb-side-item__image {
+    width: 7rem;
+    height: 7rem;
+  }
+}
+
+.kcb-side-item__text,
+.kcb-sauce-item__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.kcb-side-item__name,
+.kcb-sauce-item__name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  color: var(--kcb-charcoal);
+  margin: 0;
+}
+
+.kcb-side-item__name-ja,
+.kcb-sauce-item__name-ja {
+  font-size: 0.8rem;
+  color: rgba(20, 20, 20, 0.5);
+  margin: 0.25rem 0 0;
+}
+
+.kcb-side-item__price,
+.kcb-sauce-item__price {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.03em;
+  color: var(--kcb-lime);
+  padding: 0.35rem 0.65rem;
+  border: 1.5px solid var(--kcb-charcoal);
+  background: var(--kcb-white);
+  line-height: 1;
+}
+
+.kcb-drink-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+}
+
+@media (min-width: 640px) {
+  .kcb-drink-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .kcb-drink-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .kcb-drink-grid--alcohol {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 640px;
+  }
+}
+
+.kcb-drink-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.35rem;
+  min-height: 7.5rem;
+  padding: 0.75rem 0.5rem 0.85rem;
+  text-align: center;
+  background: var(--kcb-white);
+  border: 2px solid var(--kcb-lime-soft);
+  border-radius: 0.5rem;
+}
+
+.kcb-drink-item__logo {
+  width: 3.25rem;
+  height: 3.25rem;
+  object-fit: contain;
+  border-radius: 0.35rem;
+  background: var(--kcb-smoke);
+}
+
+.kcb-drink-item--alcohol {
+  border-color: var(--kcb-lime);
+  background: var(--kcb-lime-soft);
+}
+
+.kcb-drink-item__name {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  color: var(--kcb-charcoal);
+}
+
+.kcb-drink-item__name-ja {
+  font-size: 0.7rem;
+  color: rgba(20, 20, 20, 0.5);
+}
+
+.kcb-drink-item__badge {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--kcb-white);
+  background: var(--kcb-lime);
+  padding: 0.15rem 0.35rem;
+  border-radius: 999px;
+}
+
+.kcb-drink-note {
+  margin: 1.25rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--kcb-charcoal);
+}
+
+.kcb-drink-brand-note {
+  margin: 0.4rem 0 0;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: rgba(20, 20, 20, 0.45);
+}
+
+/* QR print page */
+.burger-qr-print {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 70% 40% at 50% 0%, var(--kcb-lime-soft), transparent 55%),
+    var(--kcb-white);
+  color: var(--kcb-black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  font-family: var(--font-body);
+}
+
+.burger-qr-print__toolbar {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.burger-qr-print__btn {
+  background: var(--kcb-lime);
+  color: var(--kcb-white);
+  border: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 3px 0 var(--kcb-lime-dark);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.burger-qr-print__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 var(--kcb-lime-dark);
+}
+
+.burger-qr-print__sheet {
+  width: 100%;
+  max-width: 420px;
+  background: var(--kcb-white);
+  border: 2px solid var(--kcb-lime);
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.burger-qr-print__brand {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--kcb-lime);
+  margin: 0 0 0.5rem;
+}
+
+.burger-qr-print__title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  letter-spacing: 0.04em;
+  color: var(--kcb-charcoal);
+  margin: 0 0 0.25rem;
+}
+
+.burger-qr-print__subtitle {
+  margin: 0 0 1.25rem;
+  color: rgba(20, 20, 20, 0.5);
+  font-size: 0.9rem;
+}
+
+.burger-qr-print__code {
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+.burger-qr-print__scan {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--kcb-lime-dark);
+  margin: 0 0 0.5rem;
+}
+
+.burger-qr-print__url {
+  font-size: 0.6875rem;
+  word-break: break-all;
+  color: rgba(20, 20, 20, 0.45);
+  margin: 0;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .burger-qr-print {
+    padding: 0;
+    background: #fff;
+  }
+  .burger-qr-print__sheet {
+    border: none;
+    max-width: none;
+    box-shadow: none;
   }
 }

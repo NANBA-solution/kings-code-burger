@@ -3,10 +3,14 @@ Design: Premium Smash Burger — heavy custom CSS (site.css)
 */
 
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "wouter";
 import { Star, MapPin, Phone, Clock, Instagram, Globe, Heart } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Mascot } from "@/components/Mascot";
 import { publicAsset } from "@/lib/assets";
+import { BURGERS } from "@/data/burgers";
+import { SIDE_ITEMS, SOFT_DRINK_ITEMS, ALCOHOL_ITEMS, SAUCE_ITEMS } from "@/data/menuExtras";
+import { LanguageToggle } from "@/components/LanguageToggle";
 
 /** 初期ヘッダー画像（CDNから取得した原本をローカル保存） */
 const HERO_BG = publicAsset("images/hero-original.webp");
@@ -23,7 +27,7 @@ const MARQUEE_ITEMS = [
 ];
 
 export default function Home() {
-  const { language, setLanguage, t } = useLanguage();
+  const { language, t } = useLanguage();
   const instagramGridRef = useRef<HTMLDivElement>(null);
   const [navScrolled, setNavScrolled] = useState(false);
   const [cursor, setCursor] = useState({ x: -200, y: -200 });
@@ -111,65 +115,7 @@ export default function Home() {
     return () => videos.forEach((video) => observer.unobserve(video));
   }, []);
 
-  const menuItems = [
-    {
-      nameKey: "menu.cheese_burger",
-      nameJaKey: "menu.cheese_burger_ja",
-      descKey: "menu.cheese_burger_desc",
-      price: "¥1,400",
-      tagKey: "menu.tag_classic",
-      image: publicAsset("images/menu/cheese-burger.png"),
-    },
-    {
-      nameKey: "menu.double_cheese",
-      nameJaKey: "menu.double_cheese_ja",
-      descKey: "menu.double_cheese_desc",
-      price: "¥2,200",
-      tagKey: "menu.tag_popular",
-      hot: true,
-      image: publicAsset("images/menu/double-cheese.png"),
-    },
-    {
-      nameKey: "menu.hot_chicken",
-      nameJaKey: "menu.hot_chicken_ja",
-      descKey: "menu.hot_chicken_desc",
-      price: "¥1,400",
-      tagKey: "menu.tag_authentic",
-      image: publicAsset("images/menu/hot-chicken.png"),
-    },
-    {
-      nameKey: "menu.hamburger",
-      nameJaKey: "menu.hamburger_ja",
-      descKey: "menu.hamburger_desc",
-      price: "¥1,500",
-      tagKey: "",
-      image: publicAsset("images/menu/hamburger.png"),
-    },
-    {
-      nameKey: "menu.bacon_lettuce",
-      nameJaKey: "menu.bacon_lettuce_ja",
-      descKey: "menu.bacon_lettuce_desc",
-      price: "¥1,600",
-      tagKey: "",
-      image: publicAsset("images/menu/bacon-lettuce.png"),
-    },
-    {
-      nameKey: "menu.double_burger",
-      nameJaKey: "menu.double_burger_ja",
-      descKey: "menu.double_burger_desc",
-      price: "¥2,200",
-      tagKey: "",
-      image: publicAsset("images/menu/double-burger.png"),
-    },
-    {
-      nameKey: "menu.thick_bacon",
-      nameJaKey: "menu.thick_bacon_ja",
-      descKey: "menu.thick_bacon_desc",
-      price: "¥2,000",
-      tagKey: "",
-      image: publicAsset("images/menu/thick-bacon.png"),
-    },
-  ];
+  const menuItems = BURGERS;
 
   const socialLinks = {
     instagram: "https://www.instagram.com/geezer.smash.burger?utm_source=qr",
@@ -240,7 +186,7 @@ export default function Home() {
               { href: "#philosophy", label: t("nav.philosophy") },
               { href: "#menu", label: t("nav.menu") },
               { href: "#reviews", label: t("nav.reviews") },
-              { href: "#instagram", label: "INSTAGRAM" },
+              { href: "#instagram", label: t("nav.instagram") },
               { href: "#access", label: t("nav.access") },
             ].map((link) => (
               <a key={link.href} href={link.href} className="kcb-nav__link">
@@ -269,22 +215,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="kcb-lang-toggle">
-              <button
-                type="button"
-                onClick={() => setLanguage("ja")}
-                className={`kcb-lang-btn ${language === "ja" ? "active" : ""}`}
-              >
-                日本語
-              </button>
-              <button
-                type="button"
-                onClick={() => setLanguage("en")}
-                className={`kcb-lang-btn ${language === "en" ? "active" : ""}`}
-              >
-                EN
-              </button>
-            </div>
+            <LanguageToggle />
           </div>
         </div>
       </nav>
@@ -320,7 +251,7 @@ export default function Home() {
           </button>
 
           <div className="kcb-hero__scroll-hint" aria-hidden="true">
-            <span>SCROLL</span>
+            <span>{t("hero.scroll")}</span>
             <div className="kcb-hero__scroll-line" />
           </div>
         </div>
@@ -360,7 +291,7 @@ export default function Home() {
             <div className="kcb-section__header-mascot">
               <Mascot size="md" animated />
             </div>
-            <span className="kcb-section__label">OUR STORY</span>
+            <span className="kcb-section__label">{t("section.philosophy_label")}</span>
             <h2 className="kcb-section__title">{t("philosophy.title")}</h2>
             <p className="kcb-manifesto__headline">{t("philosophy.headline")}</p>
             <p className="kcb-manifesto__pillars">{t("philosophy.pillars")}</p>
@@ -394,7 +325,7 @@ export default function Home() {
             <div className="kcb-section__header-mascot">
               <Mascot size="sm" />
             </div>
-            <span className="kcb-section__label">ORDER NOW</span>
+            <span className="kcb-section__label">{t("section.menu_label")}</span>
             <h2 className="kcb-section__title">{t("menu.title")}</h2>
             <p className="kcb-section__subtitle">{t("menu.subtitle")}</p>
             <div className="kcb-section__divider" />
@@ -403,7 +334,7 @@ export default function Home() {
           <div className="kcb-menu-grid">
             {menuItems.map((item, index) => (
               <article
-                key={index}
+                key={item.slug}
                 className={`kcb-menu-card kcb-reveal kcb-reveal-delay-${(index % 3) + 1}`}
               >
                 <div className="kcb-menu-card__image-wrap">
@@ -415,7 +346,13 @@ export default function Home() {
                   />
                   {item.tagKey && (
                     <span
-                      className={`kcb-menu-card__tag ${item.hot ? "kcb-menu-card__tag--hot" : ""}`}
+                      className={`kcb-menu-card__tag ${
+                        item.hot
+                          ? "kcb-menu-card__tag--hot"
+                          : item.tagKey === "menu.tag_popular"
+                            ? "kcb-menu-card__tag--hot"
+                            : ""
+                      }`}
                     >
                       {t(item.tagKey)}
                     </span>
@@ -430,9 +367,124 @@ export default function Home() {
                     <span className="kcb-menu-card__price">{item.price}</span>
                   </div>
                   <p className="kcb-menu-card__desc">{t(item.descKey)}</p>
+                  <Link href={`/menu/${item.slug}`} className="kcb-menu-card__ingredients-link">
+                    {t("ingredients.view")}
+                  </Link>
                 </div>
               </article>
             ))}
+          </div>
+
+          {/* Side Menu */}
+          <div id="sides" className="kcb-menu-extra kcb-reveal">
+            <header className="kcb-menu-extra__header">
+              <h3 className="kcb-menu-extra__title">{t("sides.title")}</h3>
+            </header>
+            <div className="kcb-side-list">
+              {SIDE_ITEMS.map((item) => (
+                <article key={item.id} className="kcb-side-item">
+                  <img
+                    src={item.image}
+                    alt={language === "ja" ? item.nameJa : item.nameEn}
+                    className="kcb-side-item__image"
+                    loading="lazy"
+                  />
+                  <div className="kcb-side-item__text">
+                    <h4 className="kcb-side-item__name">
+                      {language === "ja" ? item.nameJa : item.nameEn}
+                    </h4>
+                    {language === "ja" && (
+                      <p className="kcb-side-item__name-ja">{item.nameEn}</p>
+                    )}
+                  </div>
+                  <span className="kcb-side-item__price">{item.price}</span>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          {/* Dipping Sauce */}
+          <div id="sauces" className="kcb-menu-extra kcb-reveal">
+            <header className="kcb-menu-extra__header">
+              <h3 className="kcb-menu-extra__title">{t("sauces.title")}</h3>
+            </header>
+            <div className="kcb-sauce-list">
+              {SAUCE_ITEMS.map((item) => (
+                <article key={item.id} className="kcb-sauce-item">
+                  <img
+                    src={item.image}
+                    alt={language === "ja" ? item.nameJa : item.nameEn}
+                    className="kcb-sauce-item__image"
+                    loading="lazy"
+                  />
+                  <div className="kcb-sauce-item__text">
+                    <h4 className="kcb-sauce-item__name">
+                      {language === "ja" ? item.nameJa : item.nameEn}
+                    </h4>
+                    {language === "ja" && (
+                      <p className="kcb-sauce-item__name-ja">{item.nameEn}</p>
+                    )}
+                  </div>
+                  <span className="kcb-sauce-item__price">{item.price}</span>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          {/* Soft Drink */}
+          <div id="drinks" className="kcb-menu-extra kcb-reveal">
+            <header className="kcb-menu-extra__header">
+              <h3 className="kcb-menu-extra__title">{t("drinks.soft_title")}</h3>
+            </header>
+            <div className="kcb-drink-grid">
+              {SOFT_DRINK_ITEMS.map((item) => (
+                <div key={item.id} className="kcb-drink-item">
+                  {item.image && (
+                    <img
+                      src={item.image}
+                      alt={language === "ja" ? item.nameJa : item.nameEn}
+                      className="kcb-drink-item__logo"
+                      loading="lazy"
+                    />
+                  )}
+                  <span className="kcb-drink-item__name">
+                    {language === "ja" ? item.nameJa : item.nameEn}
+                  </span>
+                  {language === "ja" && (
+                    <span className="kcb-drink-item__name-ja">{item.nameEn}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+            <p className="kcb-drink-note">{t("drinks.note")}</p>
+            <p className="kcb-drink-brand-note">{t("drinks.brand_note")}</p>
+          </div>
+
+          {/* Alcohol */}
+          <div id="alcohol" className="kcb-menu-extra kcb-reveal">
+            <header className="kcb-menu-extra__header">
+              <h3 className="kcb-menu-extra__title">{t("drinks.alcohol_title")}</h3>
+            </header>
+            <div className="kcb-drink-grid kcb-drink-grid--alcohol">
+              {ALCOHOL_ITEMS.map((item) => (
+                <div key={item.id} className="kcb-drink-item kcb-drink-item--alcohol">
+                  {item.image && (
+                    <img
+                      src={item.image}
+                      alt={language === "ja" ? item.nameJa : item.nameEn}
+                      className="kcb-drink-item__logo"
+                      loading="lazy"
+                    />
+                  )}
+                  <span className="kcb-drink-item__name">
+                    {language === "ja" ? item.nameJa : item.nameEn}
+                  </span>
+                  {language === "ja" && (
+                    <span className="kcb-drink-item__name-ja">{item.nameEn}</span>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -445,7 +497,7 @@ export default function Home() {
             <div className="kcb-section__header-mascot">
               <Mascot size="sm" animated />
             </div>
-            <span className="kcb-section__label">VOICES</span>
+            <span className="kcb-section__label">{t("section.reviews_label")}</span>
             <h2 className="kcb-section__title">
               {t("reviews.title")}
             </h2>
@@ -487,10 +539,10 @@ export default function Home() {
             </div>
             <span className="kcb-section__label">@geezer.smash.burger</span>
             <h2 className="kcb-section__title">
-              INSTAGRAM
+              {t("nav.instagram")}
             </h2>
             <p className="kcb-section__subtitle">
-              {t("instagram.subtitle") || "Follow us for the latest burger moments"}
+              {t("instagram.subtitle")}
             </p>
             <div className="kcb-section__divider" />
           </header>
@@ -505,7 +557,7 @@ export default function Home() {
               >
                 <div>
                   <Instagram className="w-10 h-10 mx-auto mb-3" />
-                  <p className="font-bold text-lg">Follow us</p>
+                  <p className="font-bold text-lg">{t("instagram.follow")}</p>
                   <p className="text-sm opacity-80">@geezer.smash.burger</p>
                 </div>
               </a>
@@ -557,7 +609,7 @@ export default function Home() {
                 className="kcb-instagram-cta"
               >
                 <Instagram className="w-5 h-5" />
-                View on Instagram
+                {t("instagram.view")}
               </a>
             </div>
           </div>
@@ -571,7 +623,7 @@ export default function Home() {
             <div className="kcb-section__header-mascot">
               <Mascot size="sm" animated />
             </div>
-            <span className="kcb-section__label">VISIT US</span>
+            <span className="kcb-section__label">{t("section.access_label")}</span>
             <h2 className="kcb-section__title">
               {t("access.title")}
             </h2>
@@ -622,7 +674,7 @@ export default function Home() {
                   className="kcb-btn-outline"
                 >
                   <Globe className="w-4 h-4" />
-                  Google Navigation
+                  {t("access.navigation")}
                 </a>
               </div>
             </div>
