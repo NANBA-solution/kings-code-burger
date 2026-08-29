@@ -68,12 +68,6 @@ export const SOFT_DRINK_ITEMS: DrinkItem[] = [
     image: publicAsset("images/menu/drinks/ginger-ale.jpg"),
   },
   {
-    id: "dr-pepper",
-    nameEn: "DR. PEPPER",
-    nameJa: "ドクターペッパー",
-    image: publicAsset("images/menu/drinks/dr-pepper.jpg"),
-  },
-  {
     id: "orange-juice",
     nameEn: "ORANGE JUICE",
     nameJa: "オレンジジュース",
@@ -124,7 +118,14 @@ export const ALCOHOL_ITEMS: DrinkItem[] = [
     nameEn: "ASAHI BEER",
     nameJa: "アサヒビール",
     alcohol: true,
-    image: publicAsset("images/menu/drinks/asahi.webp"),
+    image: publicAsset("images/menu/drinks/asahi.jpg"),
+  },
+  {
+    id: "yebisu",
+    nameEn: "YEBISU BEER",
+    nameJa: "エビスビール",
+    alcohol: true,
+    image: publicAsset("images/menu/drinks/yebisu.jpg"),
   },
   {
     id: "heineken",

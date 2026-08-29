@@ -488,8 +488,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Reviews */}
       <section id="reviews" className="kcb-section kcb-section--cream relative">
         <Mascot size="xl" className="kcb-reviews-mascot" />
         <div className="container">
@@ -710,6 +708,29 @@ export default function Home() {
                 {t("access.ubereats")}
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Payment */}
+      <section id="payment" className="kcb-section">
+        <div className="container">
+          <header className="kcb-section__header kcb-reveal">
+            <span className="kcb-section__label">{t("payment.title")}</span>
+            <h2 className="kcb-section__title">{t("payment.subtitle")}</h2>
+            <div className="kcb-section__divider" />
+          </header>
+          <div className="kcb-payment kcb-reveal">
+            <p className="kcb-payment-cash">{t("payment.cash")}</p>
+            <div className="kcb-payment-brands">
+              <img
+                src={publicAsset("images/payment-methods.jpg")}
+                alt={t("payment.brands_alt")}
+                className="kcb-payment-brands__image"
+                loading="lazy"
+              />
+            </div>
+            <p className="kcb-payment-note">{t("payment.note")}</p>
           </div>
         </div>
       </section>

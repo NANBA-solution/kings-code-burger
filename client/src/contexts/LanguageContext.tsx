@@ -117,6 +117,11 @@ const translations = {
     'drinks.note': 'セットドリンクをお選びいただけます。＋400円でお酒（アルコール類）への変更も可能です。なお、単品ドリンクは400円、お酒は600円となります。',
     'drinks.brand_note': '※仕入れ状況により、掲載と異なるブランドをご提供する場合がございます。',
     'sauces.title': 'DIPPING SAUCE',
+    'payment.title': 'PAYMENT',
+    'payment.subtitle': 'お支払い方法',
+    'payment.cash': '現金 OK',
+    'payment.brands_alt': '決済対応ブランド一覧',
+    'payment.note': '※ PiTaPaは除く。対応状況は店舗により異なる場合があります。',
   },
   en: {
     'nav.philosophy': 'PHILOSOPHY',
@@ -224,6 +229,11 @@ const translations = {
     'drinks.note': 'Please choose a set drink. Upgrade to alcohol for +¥400. Single soft drinks are ¥400; alcoholic drinks are ¥600.',
     'drinks.brand_note': '*Brands may differ from those shown depending on supply.',
     'sauces.title': 'DIPPING SAUCE',
+    'payment.title': 'PAYMENT',
+    'payment.subtitle': 'Payment methods',
+    'payment.cash': 'Cash accepted',
+    'payment.brands_alt': 'Accepted payment brands',
+    'payment.note': '*PiTaPa not accepted. Available methods may vary.',
   },
 };
 
