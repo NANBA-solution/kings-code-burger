@@ -115,7 +115,6 @@ export const BURGERS: BurgerItem[] = [
       { nameJa: "トマト", nameEn: "Tomato" },
       { nameJa: "レタス", nameEn: "Lettuce" },
       ...BEEF_BURGER_SAUCES,
-      { nameJa: "キャラメライズドオニオン", nameEn: "Caramelized onions" },
     ],
     allergensJa: "小麦（バンズ）、乳（チーズ・マヨネーズ）、卵（マヨネーズ）",
     allergensEn: "Wheat (bun), milk (cheese, mayo), egg (mayo)",
