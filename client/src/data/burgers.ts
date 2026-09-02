@@ -52,7 +52,7 @@ export const BURGERS: BurgerItem[] = [
     nameKey: "menu.cheese_burger",
     nameJaKey: "menu.cheese_burger_ja",
     descKey: "menu.cheese_burger_desc",
-    price: "¥1,400",
+    price: "¥1,500",
     image: publicAsset("images/menu/cheese-burger.png"),
     tagKey: "menu.tag_classic",
     ingredients: [
@@ -88,7 +88,7 @@ export const BURGERS: BurgerItem[] = [
     nameKey: "menu.hamburger",
     nameJaKey: "menu.hamburger_ja",
     descKey: "menu.hamburger_desc",
-    price: "¥1,500",
+    price: "¥1,600",
     image: publicAsset("images/menu/hamburger.png"),
     ingredients: [
       { nameJa: "牛ミンチ（100%オージービーフ）", nameEn: "Ground beef (100% Aussie)" },
@@ -124,7 +124,7 @@ export const BURGERS: BurgerItem[] = [
     nameKey: "menu.bacon_lettuce",
     nameJaKey: "menu.bacon_lettuce_ja",
     descKey: "menu.bacon_lettuce_desc",
-    price: "¥1,600",
+    price: "¥1,700",
     image: publicAsset("images/menu/bacon-lettuce.png"),
     ingredients: [
       { nameJa: "牛ミンチ（100%オージービーフ）", nameEn: "Ground beef (100% Aussie)" },
@@ -142,7 +142,7 @@ export const BURGERS: BurgerItem[] = [
     nameKey: "menu.hot_chicken",
     nameJaKey: "menu.hot_chicken_ja",
     descKey: "menu.hot_chicken_desc",
-    price: "¥1,400",
+    price: "¥1,500",
     image: publicAsset("images/menu/hot-chicken.png"),
     tagKey: "menu.tag_authentic",
     hot: true,
