@@ -485,6 +485,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <p className="kcb-drink-brand-note">{t("drinks.alcohol_takeout_note")}</p>
           </div>
         </div>
       </section>
