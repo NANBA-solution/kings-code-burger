@@ -2064,6 +2064,63 @@ html {
   height: auto;
 }
 
+.kcb-recruit {
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--kcb-white);
+  border: 2px solid var(--kcb-lime-soft);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.kcb-recruit__row {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.08);
+}
+
+.kcb-recruit__row:last-child {
+  border-bottom: none;
+}
+
+.kcb-recruit dt {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--kcb-lime-dark, #3d6b12);
+}
+
+.kcb-recruit dd {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(20, 20, 20, 0.82);
+}
+
+.kcb-recruit__list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.kcb-recruit__list li + li {
+  margin-top: 0.25rem;
+}
+
+.kcb-recruit__cta {
+  margin-top: 1.75rem;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .kcb-recruit__row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}
+
 .kcb-payment-note {
   margin: 0.75rem 0 0;
   font-size: 0.7rem;
