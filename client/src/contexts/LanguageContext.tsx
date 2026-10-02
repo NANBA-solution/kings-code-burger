@@ -126,7 +126,7 @@ const translations = {
     'payment.note': '※ PiTaPaは除く。対応状況は店舗により異なる場合があります。',
     'recruit.label': 'RECRUIT',
     'recruit.title': 'スタッフ募集',
-    'recruit.lead': '西心斎橋（三ッ寺会館）のスマッシュバーガー専門店「Geezer Smash Burger」では、調理・接客スタッフを募集しています。調理経験のある方や、インバウンド対応で英語を活かしたい方を優遇いたします。',
+    'recruit.lead': 'スマッシュバーガー専門店「Geezer Smash Burger」では、調理・接客スタッフを募集しています。調理経験のある方や、インバウンド対応で英語を活かしたい方を優遇いたします。',
     'recruit.role_label': '職種',
     'recruit.role': '調理および接客全般',
     'recruit.pay_label': '給料',
@@ -144,6 +144,8 @@ const translations = {
     'recruit.apply_label': '応募方法',
     'recruit.apply': '公式InstagramのDMよりお問い合わせください。',
     'recruit.cta': 'Instagram DMで応募',
+    'recruit.more': '募集要項を見る',
+    'recruit.back': 'トップへ戻る',
   },
   en: {
     'nav.philosophy': 'PHILOSOPHY',
@@ -260,7 +262,7 @@ const translations = {
     'payment.note': '*PiTaPa not accepted. Available methods may vary.',
     'recruit.label': 'RECRUIT',
     'recruit.title': 'Join the team',
-    'recruit.lead': 'Geezer Smash Burger, a smash burger shop at Mitsutera Kaikan in Nishishinsaibashi, is hiring kitchen and service staff. Cooking experience and English for inbound guests are a plus.',
+    'recruit.lead': 'Smash burger shop Geezer Smash Burger is hiring kitchen and service staff. Cooking experience and English for inbound guests are a plus.',
     'recruit.role_label': 'Role',
     'recruit.role': 'Kitchen and front of house',
     'recruit.pay_label': 'Pay',
@@ -278,6 +280,8 @@ const translations = {
     'recruit.apply_label': 'How to apply',
     'recruit.apply': 'Message us on our official Instagram.',
     'recruit.cta': 'Apply via Instagram DM',
+    'recruit.more': 'See the details',
+    'recruit.back': 'Back to top',
   },
 };
 

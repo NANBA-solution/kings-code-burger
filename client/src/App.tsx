@@ -7,11 +7,13 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
 import BurgerDetailPage from "./pages/BurgerDetailPage";
+import RecruitPage from "./pages/RecruitPage";
 
 function AppRouter() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/recruit"} component={RecruitPage} />
       <Route path={"/menu/:slug/qr"} component={BurgerDetailPage} />
       <Route path={"/menu/:slug"} component={BurgerDetailPage} />
       <Route path={"/404"} component={NotFound} />
