@@ -8,17 +8,21 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
 import BurgerDetailPage from "./pages/BurgerDetailPage";
 import RecruitPage from "./pages/RecruitPage";
+import { FloatingSideNav } from "./components/FloatingSideNav";
 
 function AppRouter() {
   return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/recruit"} component={RecruitPage} />
-      <Route path={"/menu/:slug/qr"} component={BurgerDetailPage} />
-      <Route path={"/menu/:slug"} component={BurgerDetailPage} />
-      <Route path={"/404"} component={NotFound} />
-      <Route component={NotFound} />
-    </Switch>
+    <>
+      <Switch>
+        <Route path={"/"} component={Home} />
+        <Route path={"/recruit"} component={RecruitPage} />
+        <Route path={"/menu/:slug/qr"} component={BurgerDetailPage} />
+        <Route path={"/menu/:slug"} component={BurgerDetailPage} />
+        <Route path={"/404"} component={NotFound} />
+        <Route component={NotFound} />
+      </Switch>
+      <FloatingSideNav />
+    </>
   );
 }
 

@@ -11,6 +11,7 @@ import { publicAsset } from "@/lib/assets";
 import { BURGERS } from "@/data/burgers";
 import { SIDE_ITEMS, SOFT_DRINK_ITEMS, ALCOHOL_ITEMS, SAUCE_ITEMS } from "@/data/menuExtras";
 import { LanguageToggle } from "@/components/LanguageToggle";
+import { scrollToId } from "@/lib/scroll";
 
 /** 初期ヘッダー画像（CDNから取得した原本をローカル保存） */
 const HERO_BG = publicAsset("images/hero-original.webp");
@@ -65,6 +66,50 @@ export default function Home() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // SPA / 初回ロードでも #menu 等へ確実にスクロール
+  useEffect(() => {
+    let cancelled = false;
+    let attempts = 0;
+
+    const resolveTargetId = () => {
+      let id = window.location.hash.replace(/^#/, "");
+      if (!id) {
+        try {
+          id = sessionStorage.getItem("kcb-scroll-to") || "";
+          if (id) {
+            sessionStorage.removeItem("kcb-scroll-to");
+            history.replaceState(null, "", `/#${id}`);
+          }
+        } catch {
+          /* ignore */
+        }
+      }
+      return id;
+    };
+
+    const tryScroll = (behavior: ScrollBehavior) => {
+      if (cancelled) return;
+      const id = resolveTargetId();
+      if (!id) return;
+      if (scrollToId(id, behavior)) return;
+      if (attempts++ < 16) {
+        window.setTimeout(() => tryScroll(behavior), 40);
+      }
+    };
+
+    const t0 = window.setTimeout(() => tryScroll("auto"), 0);
+    const onHash = () => {
+      attempts = 0;
+      tryScroll("smooth");
+    };
+    window.addEventListener("hashchange", onHash);
+    return () => {
+      cancelled = true;
+      clearTimeout(t0);
+      window.removeEventListener("hashchange", onHash);
+    };
+  }, []);
+
   useEffect(() => {
     const fine = window.matchMedia("(pointer: fine)").matches;
     if (!fine) return;
@@ -90,7 +135,8 @@ export default function Home() {
   }, [language]);
 
   const scrollToAccess = () => {
-    document.getElementById("access")?.scrollIntoView({ behavior: "smooth" });
+    history.pushState(null, "", "/#access");
+    scrollToId("access", "smooth");
   };
 
   useEffect(() => {
@@ -177,19 +223,37 @@ export default function Home() {
       {/* Navigation */}
       <nav className={`kcb-nav ${navScrolled ? "scrolled" : ""}`}>
         <div className="container flex items-center justify-between py-3 md:py-4">
-          <a href="#" className="kcb-nav__brand kcb-nav__logo" aria-label="geezer">
+          <a
+            href="/"
+            className="kcb-nav__brand kcb-nav__logo"
+            aria-label="geezer"
+            onClick={(e) => {
+              e.preventDefault();
+              history.pushState(null, "", "/");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
             <Mascot size="md" className="kcb-nav__logo-img" />
           </a>
 
           <div className="hidden md:flex gap-6 lg:gap-10 items-center">
             {[
-              { href: "#philosophy", label: t("nav.philosophy") },
-              { href: "#menu", label: t("nav.menu") },
-              { href: "#reviews", label: t("nav.reviews") },
-              { href: "#instagram", label: t("nav.instagram") },
-              { href: "#access", label: t("nav.access") },
+              { id: "philosophy", label: t("nav.philosophy") },
+              { id: "menu", label: t("nav.menu") },
+              { id: "reviews", label: t("nav.reviews") },
+              { id: "instagram", label: t("nav.instagram") },
+              { id: "access", label: t("nav.access") },
             ].map((link) => (
-              <a key={link.href} href={link.href} className="kcb-nav__link">
+              <a
+                key={link.id}
+                href={`/#${link.id}`}
+                className="kcb-nav__link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  history.pushState(null, "", `/#${link.id}`);
+                  scrollToId(link.id, "smooth");
+                }}
+              >
                 {link.label}
               </a>
             ))}

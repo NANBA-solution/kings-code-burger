@@ -1,14 +1,17 @@
-import { Link, useRoute } from "wouter";
+import { Link, useLocation, useRoute } from "wouter";
+import { useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { publicAsset } from "@/lib/assets";
 import { getBurgerBySlug, burgerDetailUrl, formatIngredientLabel } from "@/data/burgers";
 import { QrCode } from "@/components/QrCode";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { BurgerQrPage } from "@/pages/BurgerQrPage";
+import { goToHomeSection } from "@/lib/scroll";
 import "@/styles/site.css";
 
 function NotFound() {
   const { t } = useLanguage();
+  const [, setLocation] = useLocation();
   return (
     <div className="burger-page">
       <header className="burger-page__header">
@@ -19,9 +22,16 @@ function NotFound() {
       </header>
       <main className="burger-page__main">
         <p className="burger-page__not-found">{t("ingredients.not_found")}</p>
-        <Link href="/#menu" className="burger-page__back">
+        <a
+          href="/#menu"
+          className="burger-page__back"
+          onClick={(e) => {
+            e.preventDefault();
+            goToHomeSection("menu", setLocation, false);
+          }}
+        >
           {t("ingredients.back_menu")}
-        </Link>
+        </a>
       </main>
     </div>
   );
@@ -29,12 +39,18 @@ function NotFound() {
 
 export default function BurgerDetailPage() {
   const { language, t } = useLanguage();
+  const [, setLocation] = useLocation();
   const [, params] = useRoute("/menu/:slug");
   const [, qrParams] = useRoute("/menu/:slug/qr");
   const slug = params?.slug ?? qrParams?.slug;
   const isQrOnly = Boolean(qrParams?.slug);
 
   const burger = slug ? getBurgerBySlug(slug) : undefined;
+
+  useEffect(() => {
+    if (!burger || isQrOnly) return;
+    document.title = `${t(burger.nameKey)} | geezer`;
+  }, [burger, isQrOnly, language, t]);
 
   if (!burger) return <NotFound />;
   if (isQrOnly) return <BurgerQrPage burger={burger} />;
@@ -52,9 +68,16 @@ export default function BurgerDetailPage() {
           <Link href={`/menu/${burger.slug}/qr`} className="burger-page__qr-link">
             {t("ingredients.print_qr")}
           </Link>
-          <Link href="/#menu" className="burger-page__back">
+          <a
+            href="/#menu"
+            className="burger-page__back"
+            onClick={(e) => {
+              e.preventDefault();
+              goToHomeSection("menu", setLocation, false);
+            }}
+          >
             {t("ingredients.back_menu")}
-          </Link>
+          </a>
         </div>
       </header>
 

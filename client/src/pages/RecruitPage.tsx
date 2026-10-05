@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
-import { Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { Mascot } from "@/components/Mascot";
 
-const INSTAGRAM = "https://www.instagram.com/geezer.smash.burger?utm_source=qr";
+const LINE_ADD_URL = "https://line.me/R/ti/p/@792ngpfp";
+const LINE_ADD_IMG = "https://scdn.line-apps.com/n/line_add_friends/btn/ja.png";
 
 export default function RecruitPage() {
   const { language, t } = useLanguage();
@@ -16,6 +16,10 @@ export default function RecruitPage() {
         ? "スタッフ募集 | geezer"
         : "Join the team | geezer";
   }, [language]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="kcb-site min-h-screen bg-white">
@@ -84,13 +88,16 @@ export default function RecruitPage() {
 
           <div className="kcb-recruit__cta">
             <a
-              href={INSTAGRAM}
+              href={LINE_ADD_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="kcb-instagram-cta"
+              className="kcb-recruit__line"
             >
-              <Instagram className="w-5 h-5" />
-              {t("recruit.cta")}
+              <img
+                src={LINE_ADD_IMG}
+                alt={t("recruit.line_alt")}
+                height={36}
+              />
             </a>
           </div>
         </div>
