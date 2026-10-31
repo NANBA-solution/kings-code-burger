@@ -8,13 +8,36 @@ import { Star, MapPin, Phone, Clock, Instagram, Globe, Heart } from "lucide-reac
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Mascot } from "@/components/Mascot";
 import { publicAsset } from "@/lib/assets";
-import { BURGERS } from "@/data/burgers";
+import { BURGERS, type BurgerItem } from "@/data/burgers";
 import { SIDE_ITEMS, SOFT_DRINK_ITEMS, ALCOHOL_ITEMS, SAUCE_ITEMS } from "@/data/menuExtras";
 import { LanguageToggle } from "@/components/LanguageToggle";
+import { SwipeImages } from "@/components/SwipeImages";
 import { scrollToId } from "@/lib/scroll";
 
 /** 初期ヘッダー画像（CDNから取得した原本をローカル保存） */
 const HERO_BG = publicAsset("images/hero-original.webp");
+
+function MenuCardImages({
+  item,
+  alt,
+  tag,
+}: {
+  item: BurgerItem;
+  alt: string;
+  tag?: React.ReactNode;
+}) {
+  return (
+    <SwipeImages
+      images={[item.image, item.image2].filter(Boolean) as string[]}
+      alt={alt}
+      className="kcb-menu-card__image-wrap"
+      imageClassName="kcb-menu-card__image"
+      dotsClassName="kcb-menu-card__shots"
+      dotClassName="kcb-menu-card__shot"
+      overlay={tag}
+    />
+  );
+}
 
 const MARQUEE_ITEMS = [
   "SMASH BURGER",
@@ -404,27 +427,25 @@ export default function Home() {
                 key={item.slug}
                 className={`kcb-menu-card kcb-reveal kcb-reveal-delay-${(index % 3) + 1}`}
               >
-                <div className="kcb-menu-card__image-wrap">
-                  <img
-                    src={item.image}
-                    alt={t(item.nameKey)}
-                    className="kcb-menu-card__image"
-                    loading="lazy"
-                  />
-                  {item.tagKey && (
-                    <span
-                      className={`kcb-menu-card__tag ${
-                        item.hot
-                          ? "kcb-menu-card__tag--hot"
-                          : item.tagKey === "menu.tag_popular"
+                <MenuCardImages
+                  item={item}
+                  alt={t(item.nameKey)}
+                  tag={
+                    item.tagKey ? (
+                      <span
+                        className={`kcb-menu-card__tag ${
+                          item.hot
                             ? "kcb-menu-card__tag--hot"
-                            : ""
-                      }`}
-                    >
-                      {t(item.tagKey)}
-                    </span>
-                  )}
-                </div>
+                            : item.tagKey === "menu.tag_popular"
+                              ? "kcb-menu-card__tag--hot"
+                              : ""
+                        }`}
+                      >
+                        {t(item.tagKey)}
+                      </span>
+                    ) : null
+                  }
+                />
                 <div className="kcb-menu-card__body">
                   <div className="kcb-menu-card__header">
                     <div>

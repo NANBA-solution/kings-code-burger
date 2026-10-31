@@ -5,6 +5,7 @@ import { publicAsset } from "@/lib/assets";
 import { getBurgerBySlug, burgerDetailUrl, formatIngredientLabel } from "@/data/burgers";
 import { QrCode } from "@/components/QrCode";
 import { LanguageToggle } from "@/components/LanguageToggle";
+import { SwipeImages } from "@/components/SwipeImages";
 import { BurgerQrPage } from "@/pages/BurgerQrPage";
 import { goToHomeSection } from "@/lib/scroll";
 import "@/styles/site.css";
@@ -84,7 +85,14 @@ export default function BurgerDetailPage() {
       <main className="burger-page__main">
         <article className="burger-detail">
           <div className="burger-detail__hero">
-            <img src={burger.image} alt={t(burger.nameKey)} className="burger-detail__image" />
+            <SwipeImages
+              images={[burger.image, burger.image2].filter(Boolean) as string[]}
+              alt={t(burger.nameKey)}
+              className="burger-detail__media"
+              imageClassName="burger-detail__image"
+              dotsClassName="burger-detail__shots"
+              dotClassName="burger-detail__shot"
+            />
             <div className="burger-detail__intro">
               {burger.tagKey && (
                 <span className="burger-detail__tag">{t(burger.tagKey)}</span>

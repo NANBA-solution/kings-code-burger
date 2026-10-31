@@ -1106,6 +1106,25 @@ html {
   overflow: hidden;
 }
 
+.kcb-menu-card__image-wrap.is-swipeable,
+.burger-detail__media.is-swipeable {
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.kcb-menu-card__image-wrap.is-swipeable:active,
+.burger-detail__media.is-swipeable:active {
+  cursor: grabbing;
+}
+
+.kcb-menu-card__image-wrap.is-swipeable:focus-visible,
+.burger-detail__media.is-swipeable:focus-visible {
+  outline: 2px solid var(--kcb-lime);
+  outline-offset: 2px;
+}
+
 .kcb-menu-card__image-wrap::after {
   content: "";
   position: absolute;
@@ -1119,10 +1138,40 @@ html {
   height: 100%;
   object-fit: cover;
   transition: transform 0.7s var(--ease-out-expo);
+  pointer-events: none;
 }
 
 .kcb-menu-card:hover .kcb-menu-card__image {
   transform: scale(1.12);
+}
+
+.kcb-menu-card__shots {
+  position: absolute;
+  left: 50%;
+  bottom: 0.85rem;
+  z-index: 2;
+  display: flex;
+  gap: 0.4rem;
+  transform: translateX(-50%);
+}
+
+.kcb-menu-card__shot {
+  width: 0.55rem;
+  height: 0.55rem;
+  padding: 0;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.kcb-menu-card__shot.is-active {
+  background: var(--kcb-lime);
+  border-color: var(--kcb-lime);
+  transform: scale(1.15);
 }
 
 .kcb-menu-card__tag {
@@ -1805,13 +1854,51 @@ html {
   }
 }
 
+.burger-detail__media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+
 .burger-detail__image {
   width: 100%;
   max-height: 360px;
+  aspect-ratio: 1;
   object-fit: cover;
   border-radius: 0.75rem;
   border: 2px solid var(--kcb-lime-soft);
   background: var(--kcb-smoke);
+  pointer-events: none;
+  display: block;
+}
+
+.burger-detail__shots {
+  position: absolute;
+  left: 50%;
+  bottom: 0.85rem;
+  z-index: 2;
+  display: flex;
+  gap: 0.4rem;
+  transform: translateX(-50%);
+}
+
+.burger-detail__shot {
+  width: 0.55rem;
+  height: 0.55rem;
+  padding: 0;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.burger-detail__shot.is-active {
+  background: var(--kcb-lime);
+  border-color: var(--kcb-lime);
+  transform: scale(1.15);
 }
 
 .burger-detail__tag {

@@ -16,6 +16,8 @@ export type BurgerItem = {
   descKey: string;
   price: string;
   image: string;
+  /** 追加カット（任意）。メニューカード／詳細で切り替え表示 */
+  image2?: string;
   tagKey?: string;
   hot?: boolean;
   ingredients: BurgerIngredient[];
@@ -54,6 +56,7 @@ export const BURGERS: BurgerItem[] = [
     descKey: "menu.cheese_burger_desc",
     price: "¥1,500",
     image: publicAsset("images/menu/cheese-burger.png"),
+    image2: publicAsset("images/menu/cheese-burger-2.jpg"),
     tagKey: "menu.tag_classic",
     ingredients: [
       { nameJa: "牛ミンチ（100%オージービーフ）", nameEn: "Ground beef (100% Aussie)" },
@@ -72,6 +75,7 @@ export const BURGERS: BurgerItem[] = [
     descKey: "menu.double_cheese_desc",
     price: "¥2,200",
     image: publicAsset("images/menu/double-cheese.png"),
+    image2: publicAsset("images/menu/double-cheese-2.jpg"),
     tagKey: "menu.tag_popular",
     ingredients: [
       { nameJa: "牛ミンチ（100%オージービーフ）", nameEn: "Ground beef (100% Aussie)" },
@@ -90,6 +94,7 @@ export const BURGERS: BurgerItem[] = [
     descKey: "menu.hamburger_desc",
     price: "¥1,600",
     image: publicAsset("images/menu/hamburger.png"),
+    image2: publicAsset("images/menu/hamburger-2.jpg"),
     ingredients: [
       { nameJa: "牛ミンチ（100%オージービーフ）", nameEn: "Ground beef (100% Aussie)" },
       { nameJa: "バンズ", nameEn: "Burger bun" },
@@ -108,6 +113,7 @@ export const BURGERS: BurgerItem[] = [
     descKey: "menu.double_burger_desc",
     price: "¥2,300",
     image: publicAsset("images/menu/double-burger.png"),
+    image2: publicAsset("images/menu/double-burger-2.jpg"),
     ingredients: [
       { nameJa: "牛ミンチ（100%オージービーフ）", nameEn: "Ground beef (100% Aussie)" },
       { nameJa: "バンズ", nameEn: "Burger bun" },
@@ -126,6 +132,7 @@ export const BURGERS: BurgerItem[] = [
     descKey: "menu.bacon_lettuce_desc",
     price: "¥1,700",
     image: publicAsset("images/menu/bacon-lettuce.png"),
+    image2: publicAsset("images/menu/bacon-lettuce-2.jpg"),
     ingredients: [
       { nameJa: "牛ミンチ（100%オージービーフ）", nameEn: "Ground beef (100% Aussie)" },
       { nameJa: "バンズ", nameEn: "Burger bun" },
@@ -144,6 +151,7 @@ export const BURGERS: BurgerItem[] = [
     descKey: "menu.hot_chicken_desc",
     price: "¥1,500",
     image: publicAsset("images/menu/hot-chicken.png"),
+    image2: publicAsset("images/menu/hot-chicken-2.jpg"),
     tagKey: "menu.tag_authentic",
     hot: true,
     ingredients: [
