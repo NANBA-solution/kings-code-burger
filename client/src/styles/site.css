@@ -65,21 +65,8 @@ html {
   position: fixed;
   inset: 0;
   z-index: 80;
-  opacity: 0.045;
+  opacity: 0.018;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-.kcb-cursor {
-  position: fixed;
-  z-index: 70;
-  width: 280px;
-  height: 280px;
-  margin: -140px 0 0 -140px;
-  border-radius: 50%;
-  pointer-events: none;
-  background: radial-gradient(circle, rgba(0, 122, 56, 0.16) 0%, transparent 68%);
-  mix-blend-mode: multiply;
-  transition: left 0.12s linear, top 0.12s linear;
 }
 
 /* ─── Keyframe Animations ─── */
@@ -393,6 +380,11 @@ html {
   color: var(--kcb-white);
 }
 
+.kcb-float-nav__item.is-active {
+  background: rgba(200, 245, 66, 0.35);
+  color: var(--kcb-lime-dark);
+}
+
 .kcb-float-nav__item--line {
   color: #06c755;
   min-height: 2.75rem;
@@ -421,6 +413,7 @@ html {
 /* Anchor targets clear fixed header */
 #philosophy,
 #menu,
+#delivery,
 #reviews,
 #instagram,
 #access {
@@ -688,33 +681,47 @@ html {
   border-radius: 4px;
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(0, 96, 44, 0.45);
+  opacity: 0;
+  animation: kcb-fade-in-up 0.9s var(--ease-out-expo) 1.05s forwards;
   transition:
     transform 0.3s var(--ease-bounce),
     box-shadow 0.3s ease,
-    background 0.3s ease;
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
-.kcb-hero__cta::after,
+.kcb-hero__cta--ghost {
+  background: transparent;
+  color: var(--kcb-white);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  box-shadow: none;
+}
+
 .kcb-btn-primary::after,
 .kcb-instagram-cta::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
-  transform: translateX(-120%);
-  animation: kcb-shine 3.6s ease-in-out infinite;
+  content: none;
 }
 
 .kcb-hero__cta:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow:
-    0 0 60px rgba(200, 245, 66, 0.5),
-    0 6px 0 var(--kcb-lime-dark);
+  transform: translateY(-2px);
+  background: var(--kcb-lime-bright);
+  box-shadow: 0 8px 24px rgba(0, 96, 44, 0.35);
 }
 
 .kcb-hero__cta:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 0 var(--kcb-lime-dark);
+  transform: translateY(0);
+  box-shadow: 0 4px 14px rgba(0, 96, 44, 0.3);
+}
+
+.kcb-hero__cta--ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--kcb-white);
+  box-shadow: none;
+}
+
+.kcb-hero__cta--ghost:active {
+  box-shadow: none;
 }
 
 .kcb-hero__scroll-hint {
@@ -858,7 +865,7 @@ html {
 /* ─── Section Shared ─── */
 .kcb-section {
   position: relative;
-  padding: 6rem 0;
+  padding: clamp(4.5rem, 8vw, 7rem) 0;
   overflow: hidden;
 }
 
@@ -878,13 +885,13 @@ html {
 }
 
 .kcb-section--muted {
-  background: linear-gradient(180deg, #f2f8f4 0%, #e6f2eb 100%);
+  background: #f6f8f7;
   color: var(--kcb-black);
 }
 
 .kcb-section__header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
 }
 
 .kcb-section__label {
@@ -900,7 +907,7 @@ html {
 
 .kcb-section__title {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 10vw, 6rem);
+  font-size: clamp(2.75rem, 8vw, 5rem);
   line-height: 0.95;
   letter-spacing: 0.03em;
   margin-bottom: 0.75rem;
@@ -916,10 +923,10 @@ html {
 }
 
 .kcb-section__divider {
-  width: 80px;
-  height: 4px;
-  margin: 1.5rem auto 0;
-  background: linear-gradient(90deg, transparent, var(--kcb-lime), var(--kcb-lime-dark), transparent);
+  width: 48px;
+  height: 2px;
+  margin: 1.35rem auto 0;
+  background: var(--kcb-lime);
   border-radius: 2px;
   transform: scaleX(0);
 }
@@ -989,67 +996,44 @@ html {
 
 .kcb-philosophy-card {
   position: relative;
-  padding: 2.5rem 2rem;
-  background: var(--kcb-white);
-  border: 2px solid var(--kcb-lime-soft);
-  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-top: 1px solid rgba(0, 96, 44, 0.18);
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition:
-    transform 0.5s var(--ease-out-expo),
-    border-color 0.4s ease,
-    box-shadow 0.4s ease;
-}
-
-.kcb-philosophy-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--kcb-lime), var(--kcb-lime-dark));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s var(--ease-out-expo);
+  box-shadow: none;
+  transition: transform 0.4s var(--ease-out-expo);
 }
 
 .kcb-philosophy-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--kcb-lime);
-  box-shadow:
-    var(--shadow-md),
-    0 0 32px rgba(0, 96, 44, 0.15);
-}
-
-.kcb-philosophy-card:hover::before {
-  transform: scaleX(1);
+  transform: translateY(-4px);
 }
 
 .kcb-philosophy-card__icon {
-  width: 72px;
-  height: 72px;
-  margin: 0 auto 1.5rem;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--kcb-lime-soft);
-  border-radius: 50%;
-  border: 2px solid rgba(0, 96, 44, 0.3);
+  background: transparent;
+  border-radius: 0;
+  border: none;
 }
 
 .kcb-philosophy-card__icon svg {
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   color: var(--kcb-lime);
 }
 
 .kcb-philosophy-card__title {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 1.55rem;
   letter-spacing: 0.08em;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: var(--kcb-lime-dark);
 }
 
@@ -1070,34 +1054,17 @@ html {
 .kcb-menu-card {
   position: relative;
   background: var(--kcb-white);
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 12px 32px rgba(0, 0, 0, 0.06);
   transition:
-    transform 0.5s var(--ease-out-expo),
-    box-shadow 0.5s ease;
-}
-
-.kcb-menu-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  border: 2px solid transparent;
-  transition: border-color 0.4s ease;
-  pointer-events: none;
+    transform 0.45s var(--ease-out-expo),
+    box-shadow 0.45s ease;
 }
 
 .kcb-menu-card:hover {
-  transform: translateY(-12px) rotate(-0.5deg);
-  box-shadow:
-    var(--shadow-lg),
-    0 0 24px rgba(0, 96, 44, 0.2);
-}
-
-.kcb-menu-card:hover::after {
-  border-color: var(--kcb-lime);
-  animation: kcb-border-dance 2s ease infinite;
+  transform: translateY(-6px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 18px 40px rgba(0, 0, 0, 0.1);
 }
 
 .kcb-menu-card__image-wrap {
@@ -1265,8 +1232,8 @@ html {
 }
 
 .kcb-review-card:hover {
-  transform: scale(1.02);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
 
 .kcb-review-card__quote {
@@ -1334,8 +1301,8 @@ html {
 }
 
 .kcb-instagram-item:hover {
-  transform: scale(1.03);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
   z-index: 2;
 }
 
@@ -1404,22 +1371,123 @@ html {
   border: 2px solid var(--kcb-lime);
 }
 
-/* ─── Access Cards ─── */
-.kcb-access-notice {
-  max-width: 40rem;
-  margin: -2rem auto 2.5rem;
-  padding: 1rem 1.5rem;
-  text-align: center;
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--kcb-white);
-  background: var(--kcb-lime-dark);
-  border: 2px solid var(--kcb-lime);
-  border-radius: 8px;
-  box-shadow: var(--shadow-md);
+/* ─── Delivery — convert after menu ─── */
+.kcb-section--delivery {
+  background: var(--kcb-white);
 }
 
+.kcb-delivery__mascot,
+.kcb-access__mascot,
+.kcb-menu__mascot {
+  width: clamp(4.25rem, 12vw, 5.75rem);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  mix-blend-mode: multiply;
+}
+
+.kcb-delivery__headline,
+.kcb-access__headline {
+  margin: 0.35rem 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  color: var(--kcb-charcoal);
+}
+
+.kcb-menu__proof {
+  margin: 0.35rem 0 0.15rem;
+  font-family: var(--font-accent);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--kcb-lime-dark);
+}
+
+.kcb-delivery__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .kcb-delivery__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.kcb-delivery__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.35rem 1.25rem 1.25rem;
+  text-decoration: none;
+  color: var(--kcb-charcoal);
+  background: var(--kcb-white);
+  border: 2px solid var(--kcb-lime-soft);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.3s var(--ease-bounce, cubic-bezier(0.34, 1.56, 0.64, 1)),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.kcb-delivery__card:hover {
+  transform: translateY(-3px);
+  border-color: var(--kcb-lime);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.kcb-delivery__logo {
+  width: 5.5rem;
+  height: 5.5rem;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.kcb-delivery__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--kcb-white);
+  background: var(--kcb-lime);
+  border-radius: 0.35rem;
+  box-shadow: none;
+}
+
+.kcb-delivery__card--uber .kcb-delivery__cta {
+  background: #06c167;
+  box-shadow: none;
+}
+
+.kcb-delivery__card--rocket .kcb-delivery__cta {
+  background: #e84e0f;
+  box-shadow: none;
+}
+
+.kcb-delivery__note {
+  margin: 1.25rem auto 0;
+  max-width: 42rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: rgba(20, 20, 20, 0.5);
+}
+
+/* ─── Access Cards ─── */
 .kcb-access-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1429,19 +1497,20 @@ html {
 }
 
 .kcb-access-card {
-  padding: 2rem;
+  padding: 1.75rem 1.5rem;
   background: var(--kcb-white);
-  border-radius: 16px;
-  box-shadow: var(--shadow-md);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid rgba(0, 96, 44, 0.12);
   transition:
-    transform 0.4s var(--ease-out-expo),
-    box-shadow 0.4s ease;
+    transform 0.35s var(--ease-out-expo),
+    border-color 0.35s ease;
 }
 
 .kcb-access-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  border-color: rgba(0, 96, 44, 0.28);
+  box-shadow: none;
 }
 
 .kcb-access-card__row {
@@ -1452,13 +1521,13 @@ html {
 
 .kcb-access-card__icon {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(200, 245, 66, 0.2), rgba(232, 168, 56, 0.15));
-  border-radius: 12px;
+  background: var(--kcb-lime-soft);
+  border-radius: 8px;
   color: var(--kcb-lime-dark);
 }
 
@@ -1468,6 +1537,18 @@ html {
   letter-spacing: 0.06em;
   color: var(--kcb-charcoal);
   margin-bottom: 0.35rem;
+}
+
+.kcb-access-card__tel {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(0, 96, 44, 0.35);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.kcb-access-card__tel:hover {
+  color: var(--kcb-lime-dark);
+  border-color: var(--kcb-lime);
 }
 
 .kcb-access-card__value {
@@ -1691,6 +1772,7 @@ html {
 }
 
 .kcb-reviews-mascot {
+  display: none;
   position: absolute;
   left: 1rem;
   top: 50%;
@@ -1720,11 +1802,7 @@ html {
   transition: transform 0.45s var(--ease-out-expo);
 }
 .kcb-philosophy-card:hover .kcb-philosophy-card__icon {
-  transform: scale(1.08) rotate(-4deg);
-}
-
-.kcb-access-notice {
-  animation: kcb-pulse-glow 3.2s ease-in-out infinite;
+  transform: none;
 }
 
 .kcb-footer__glow {
@@ -2030,6 +2108,36 @@ html {
   color: var(--kcb-charcoal);
 }
 
+.kcb-menu-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.1rem;
+  margin-top: 0.9rem;
+}
+
+.kcb-menu-card__order {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.1rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--kcb-white);
+  background: var(--kcb-lime);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease-bounce), background 0.2s ease;
+}
+
+.kcb-menu-card__order:hover {
+  background: var(--kcb-lime-bright);
+  transform: translateY(-2px);
+}
+
 .kcb-menu-card__ingredients-link {
   display: inline-block;
   margin-top: 1rem;
@@ -2049,11 +2157,40 @@ html {
   border-color: var(--kcb-lime-dark);
 }
 
+.kcb-order-bridge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.5rem auto 0.5rem;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  max-width: 36rem;
+}
+
+.kcb-order-bridge__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 4vw, 2rem);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  color: var(--kcb-charcoal);
+}
+
+.kcb-order-bridge--reviews {
+  margin-top: 2.75rem;
+}
+
+.kcb-order-bridge .kcb-hero__cta {
+  opacity: 1;
+  animation: none;
+}
+
 /* Menu extras — Side / Drinks / Sauce */
 .kcb-menu-extra {
-  margin-top: 3.5rem;
-  padding-top: 2.5rem;
-  border-top: 4px solid var(--kcb-lime);
+  margin-top: 3rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid rgba(0, 96, 44, 0.18);
 }
 
 .kcb-menu-extra__header {
@@ -2215,8 +2352,8 @@ html {
 }
 
 .kcb-drink-item--alcohol {
-  border-color: var(--kcb-lime);
-  background: var(--kcb-lime-soft);
+  border-color: var(--kcb-lime-soft);
+  background: var(--kcb-white);
 }
 
 .kcb-drink-item__name {

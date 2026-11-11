@@ -1,6 +1,6 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import { Link, useLocation } from "wouter";
-import { Instagram, MapPin, UserPlus, UtensilsCrossed } from "lucide-react";
+import { Bike, Instagram, MapPin, UserPlus, UtensilsCrossed } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { goToHomeSection } from "@/lib/scroll";
 
@@ -49,6 +49,14 @@ export function FloatingSideNav() {
         <span>{t("nav.menu")}</span>
       </a>
       <a
+        href="/#delivery"
+        className="kcb-float-nav__item"
+        onClick={goSection("delivery")}
+      >
+        <Bike size={16} aria-hidden />
+        <span>{t("nav.delivery")}</span>
+      </a>
+      <a
         href="/#access"
         className="kcb-float-nav__item"
         onClick={goSection("access")}
@@ -58,7 +66,7 @@ export function FloatingSideNav() {
       </a>
       <Link
         href="/recruit"
-        className={`kcb-float-nav__item${isRecruit ? " kcb-float-nav__item--accent" : ""}`}
+        className={`kcb-float-nav__item${isRecruit ? " is-active" : ""}`}
         aria-current={isRecruit ? "page" : undefined}
       >
         <UserPlus size={16} aria-hidden />

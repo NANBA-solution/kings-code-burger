@@ -54,7 +54,6 @@ export default function Home() {
   const { language, t } = useLanguage();
   const instagramGridRef = useRef<HTMLDivElement>(null);
   const [navScrolled, setNavScrolled] = useState(false);
-  const [cursor, setCursor] = useState({ x: -200, y: -200 });
 
   useEffect(() => {
     if (language === "ja") {
@@ -63,7 +62,7 @@ export default function Home() {
         .querySelector('meta[name="description"]')
         ?.setAttribute(
           "content",
-          "geezerは心斎橋・三ッ寺会館1Fへ移転準備中。南森町から移転のため一時休業。オープン情報はInstagramへ。"
+          "geezer | 心斎橋のスマッシュバーガー専門店。100%オージービーフ。Uber Eats・Rocket Nowでデリバリー注文可。"
         );
     } else {
       document.title = "geezer | Osaka's Best Smash Burger";
@@ -71,7 +70,7 @@ export default function Home() {
         .querySelector('meta[name="description"]')
         ?.setAttribute(
           "content",
-          "geezer is relocating to Mitsutera Kaikan 1F, Shinsaibashi. Temporarily closed. Follow Instagram for the opening date."
+          "geezer — smash burgers in Shinsaibashi. Order on Uber Eats or Rocket Now."
         );
     }
   }, [language]);
@@ -134,14 +133,6 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const fine = window.matchMedia("(pointer: fine)").matches;
-    if (!fine) return;
-    const onMove = (e: MouseEvent) => setCursor({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", onMove, { passive: true });
-    return () => window.removeEventListener("mousemove", onMove);
-  }, []);
-
-  useEffect(() => {
     const reveals = document.querySelectorAll(".kcb-reveal");
     const observer = new IntersectionObserver(
       (entries) => {
@@ -157,9 +148,9 @@ export default function Home() {
     return () => observer.disconnect();
   }, [language]);
 
-  const scrollToAccess = () => {
-    history.pushState(null, "", "/#access");
-    scrollToId("access", "smooth");
+  const scrollToMenu = () => {
+    history.pushState(null, "", "/#menu");
+    scrollToId("menu", "smooth");
   };
 
   useEffect(() => {
@@ -185,6 +176,11 @@ export default function Home() {
   }, []);
 
   const menuItems = BURGERS;
+
+  const deliveryLinks = {
+    uberEats: "https://www.ubereats.com/jp/search?q=Geezer%20Smash%20Burger",
+    rocketNow: "https://apps.apple.com/jp/app/rocket-now-%E5%87%BA%E5%89%8D-%E3%83%95%E3%83%BC%E3%83%89%E3%83%87%E3%83%AA%E3%83%90%E3%83%AA%E3%83%BC/id6739188587",
+  };
 
   const socialLinks = {
     instagram: "https://www.instagram.com/geezer.smash.burger?utm_source=qr",
@@ -238,11 +234,6 @@ export default function Home() {
 
   return (
     <div className="kcb-site min-h-screen bg-white">
-      <div
-        className="kcb-cursor"
-        aria-hidden="true"
-        style={{ left: cursor.x, top: cursor.y }}
-      />
       {/* Navigation */}
       <nav className={`kcb-nav ${navScrolled ? "scrolled" : ""}`}>
         <div className="container flex items-center justify-between py-3 md:py-4">
@@ -263,6 +254,7 @@ export default function Home() {
             {[
               { id: "philosophy", label: t("nav.philosophy") },
               { id: "menu", label: t("nav.menu") },
+              { id: "delivery", label: t("nav.delivery") },
               { id: "reviews", label: t("nav.reviews") },
               { id: "instagram", label: t("nav.instagram") },
               { id: "access", label: t("nav.access") },
@@ -336,7 +328,7 @@ export default function Home() {
           <p className="kcb-hero__subtitle">{t("hero.subtitle")}</p>
           <p className="kcb-hero__tagline">{t("hero.tagline")}</p>
 
-          <button type="button" className="kcb-hero__cta" onClick={scrollToAccess}>
+          <button type="button" className="kcb-hero__cta" onClick={scrollToMenu}>
             {t("hero.button")}
           </button>
 
@@ -384,10 +376,7 @@ export default function Home() {
             <span className="kcb-section__label">{t("section.philosophy_label")}</span>
             <h2 className="kcb-section__title">{t("philosophy.title")}</h2>
             <p className="kcb-manifesto__headline">{t("philosophy.headline")}</p>
-            <p className="kcb-manifesto__pillars">{t("philosophy.pillars")}</p>
             <p className="kcb-manifesto__body">{t("philosophy.body")}</p>
-            <p className="kcb-manifesto__closer">{t("philosophy.closer")}</p>
-            <p className="kcb-manifesto__tagline">{t("hero.tagline")}</p>
             <div className="kcb-section__divider" />
           </header>
 
@@ -413,7 +402,12 @@ export default function Home() {
         <div className="container">
           <header className="kcb-section__header kcb-reveal">
             <div className="kcb-section__header-mascot">
-              <Mascot size="sm" />
+              <img
+                src={publicAsset("images/menu/geezer-menu.jpg")}
+                alt="geezer menu"
+                className="kcb-menu__mascot"
+                loading="lazy"
+              />
             </div>
             <span className="kcb-section__label">{t("section.menu_label")}</span>
             <h2 className="kcb-section__title">{t("menu.title")}</h2>
@@ -575,15 +569,65 @@ export default function Home() {
             </div>
             <p className="kcb-drink-brand-note">{t("drinks.alcohol_takeout_note")}</p>
           </div>
+
         </div>
       </section>
-      <section id="reviews" className="kcb-section kcb-section--cream relative">
-        <Mascot size="xl" className="kcb-reviews-mascot" />
+
+      {/* Delivery — convert desire into an order */}
+      <section id="delivery" className="kcb-section kcb-section--delivery">
         <div className="container">
           <header className="kcb-section__header kcb-reveal">
             <div className="kcb-section__header-mascot">
-              <Mascot size="sm" animated />
+              <img
+                src={publicAsset("images/delivery/geezer-delivery.jpg")}
+                alt="geezer delivery"
+                className="kcb-delivery__mascot"
+                loading="lazy"
+              />
             </div>
+            <span className="kcb-section__label">{t("section.delivery_label")}</span>
+            <h2 className="kcb-section__title">{t("delivery.title")}</h2>
+            <p className="kcb-delivery__headline">{t("delivery.headline")}</p>
+            <p className="kcb-section__subtitle">{t("delivery.subtitle")}</p>
+            <div className="kcb-section__divider" />
+          </header>
+
+          <div className="kcb-delivery__grid kcb-reveal">
+            <a
+              href={deliveryLinks.uberEats}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="kcb-delivery__card kcb-delivery__card--uber"
+            >
+              <img
+                src={publicAsset("images/delivery/uber-eats.jpg")}
+                alt="Uber Eats"
+                className="kcb-delivery__logo"
+                loading="lazy"
+              />
+              <span className="kcb-delivery__cta">{t("delivery.uber")}</span>
+            </a>
+            <a
+              href={deliveryLinks.rocketNow}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="kcb-delivery__card kcb-delivery__card--rocket"
+            >
+              <img
+                src={publicAsset("images/delivery/rocket-now.png")}
+                alt="Rocket Now"
+                className="kcb-delivery__logo"
+                loading="lazy"
+              />
+              <span className="kcb-delivery__cta">{t("delivery.rocket")}</span>
+            </a>
+          </div>
+          <p className="kcb-delivery__note kcb-reveal">{t("delivery.note")}</p>
+        </div>
+      </section>
+      <section id="reviews" className="kcb-section kcb-section--cream relative">
+        <div className="container">
+          <header className="kcb-section__header kcb-reveal">
             <span className="kcb-section__label">{t("section.reviews_label")}</span>
             <h2 className="kcb-section__title">
               {t("reviews.title")}
@@ -614,6 +658,7 @@ export default function Home() {
               </article>
             ))}
           </div>
+
         </div>
       </section>
 
@@ -708,19 +753,21 @@ export default function Home() {
         <div className="container">
           <header className="kcb-section__header kcb-reveal">
             <div className="kcb-section__header-mascot">
-              <Mascot size="sm" animated />
+              <img
+                src={publicAsset("images/access/geezer-access.jpg")}
+                alt="geezer access"
+                className="kcb-access__mascot"
+                loading="lazy"
+              />
             </div>
             <span className="kcb-section__label">{t("section.access_label")}</span>
             <h2 className="kcb-section__title">
               {t("access.title")}
             </h2>
+            <p className="kcb-access__headline">{t("access.headline")}</p>
             <p className="kcb-section__subtitle">{t("access.subtitle")}</p>
             <div className="kcb-section__divider" />
           </header>
-
-          <p className="kcb-access-notice kcb-reveal" role="status">
-            {t("access.closed_notice")}
-          </p>
 
           <div className="kcb-access-grid">
             <div className="kcb-access-card kcb-reveal">
@@ -746,22 +793,22 @@ export default function Home() {
 
               <div className="space-y-3 mt-2">
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E8%A5%BF%E5%BF%83%E6%96%8E%E6%A9%8B2-9-5%20%E4%B8%89%E3%83%83%E5%AF%BA%E4%BC%9A%E9%A4%A81F"
+                  href={socialLinks.googleNavigation}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="kcb-btn-primary"
                 >
                   <MapPin className="w-4 h-4" />
-                  {t("access.map")}
+                  {t("access.navigation")}
                 </a>
                 <a
-                  href={socialLinks.googleNavigation}
+                  href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E8%A5%BF%E5%BF%83%E6%96%8E%E6%A9%8B2-9-5%20%E4%B8%89%E3%83%83%E5%AF%BA%E4%BC%9A%E9%A4%A81F"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="kcb-btn-outline"
                 >
                   <Globe className="w-4 h-4" />
-                  {t("access.navigation")}
+                  {t("access.map")}
                 </a>
               </div>
             </div>
@@ -773,7 +820,11 @@ export default function Home() {
                 </div>
                 <div>
                   <h3 className="kcb-access-card__title">{t("access.phone")}</h3>
-                  <p className="kcb-access-card__value">{t("access.phone_value")}</p>
+                  <p className="kcb-access-card__value">
+                    <a href="tel:08015200694" className="kcb-access-card__tel">
+                      {t("access.phone_value")}
+                    </a>
+                  </p>
                 </div>
               </div>
 
@@ -792,9 +843,9 @@ export default function Home() {
                 href={socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="kcb-btn-primary mt-4"
+                className="kcb-btn-outline mt-4"
               >
-                {t("access.ubereats")}
+                {t("access.instagram")}
               </a>
             </div>
           </div>

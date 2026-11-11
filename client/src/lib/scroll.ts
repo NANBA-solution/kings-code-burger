@@ -46,7 +46,7 @@ export function goToHomeSection(
   // Navigate to home; Home.tsx reads hash / sessionStorage and scrolls
   setLocation("/");
   // Ensure hash is set after wouter updates the path
-  queuePromise.resolve().then(() => {
+  Promise.resolve().then(() => {
     if (window.location.pathname === "/" || window.location.pathname === "") {
       history.replaceState(null, "", `/#${id}`);
     }
