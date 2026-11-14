@@ -376,7 +376,10 @@ export default function Home() {
             <span className="kcb-section__label">{t("section.philosophy_label")}</span>
             <h2 className="kcb-section__title">{t("philosophy.title")}</h2>
             <p className="kcb-manifesto__headline">{t("philosophy.headline")}</p>
+            <p className="kcb-manifesto__pillars">{t("philosophy.pillars")}</p>
             <p className="kcb-manifesto__body">{t("philosophy.body")}</p>
+            <p className="kcb-manifesto__closer">{t("philosophy.closer")}</p>
+            <p className="kcb-manifesto__tagline">{t("hero.tagline")}</p>
             <div className="kcb-section__divider" />
           </header>
 
