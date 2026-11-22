@@ -56,8 +56,9 @@ export default function Home() {
   const [navScrolled, setNavScrolled] = useState(false);
 
   useEffect(() => {
+    document.title =
+      "Geezer Smash Burger | 大阪・心斎橋のスマッシュバーガー専門店（深夜3時まで営業） / Shinsaibashi Osaka";
     if (language === "ja") {
-      document.title = "geezer | 大阪のスマッシュバーガー専門店";
       document
         .querySelector('meta[name="description"]')
         ?.setAttribute(
@@ -65,7 +66,6 @@ export default function Home() {
           "geezer | 心斎橋のスマッシュバーガー専門店。100%オージービーフ。Uber Eats・Rocket Nowでデリバリー注文可。"
         );
     } else {
-      document.title = "geezer | Osaka's Best Smash Burger";
       document
         .querySelector('meta[name="description"]')
         ?.setAttribute(
