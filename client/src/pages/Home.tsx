@@ -58,21 +58,12 @@ export default function Home() {
   useEffect(() => {
     document.title =
       "Geezer Smash Burger | 大阪・心斎橋のスマッシュバーガー専門店（深夜3時まで営業） / Shinsaibashi Osaka";
-    if (language === "ja") {
-      document
-        .querySelector('meta[name="description"]')
-        ?.setAttribute(
-          "content",
-          "geezer | 心斎橋のスマッシュバーガー専門店。100%オージービーフ。Uber Eats・Rocket Nowでデリバリー注文可。"
-        );
-    } else {
-      document
-        .querySelector('meta[name="description"]')
-        ?.setAttribute(
-          "content",
-          "geezer — smash burgers in Shinsaibashi. Order on Uber Eats or Rocket Now."
-        );
-    }
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute(
+        "content",
+        "大阪・心斎橋（三ツ寺会館1F）のスマッシュバーガー専門店。すべてに、納得感を。100%オージービーフのバーガー＆ホットチキンをセット価格でご提供。深夜3時まで営業・テイクアウト可。Smash burger & late night food in Shinsaibashi, Osaka."
+      );
   }, [language]);
 
   useEffect(() => {

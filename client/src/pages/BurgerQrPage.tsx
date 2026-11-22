@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "wouter";
 import type { BurgerItem } from "@/data/burgers";
 import { burgerDetailUrl } from "@/data/burgers";
@@ -9,10 +10,19 @@ type Props = {
   burger: BurgerItem;
 };
 
+const QR_META_DESCRIPTION =
+  "大阪・心斎橋（三ツ寺会館1F）のスマッシュバーガー専門店「geezer」。100%オージービーフ使用。深夜3時まで営業・テイクアウト・デリバリー対応。";
+
 /** 店舗スタッフ向け：QRコードのみの印刷用ページ */
 export function BurgerQrPage({ burger }: Props) {
   const { language, t } = useLanguage();
   const url = burgerDetailUrl(burger.slug);
+
+  useEffect(() => {
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute("content", QR_META_DESCRIPTION);
+  }, []);
 
   return (
     <div className="burger-qr-print">
