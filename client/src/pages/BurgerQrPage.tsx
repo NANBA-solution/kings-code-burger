@@ -5,13 +5,11 @@ import { burgerDetailUrl } from "@/data/burgers";
 import { QrCode } from "@/components/QrCode";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { QR_META_DESCRIPTION } from "@/lib/site";
 
 type Props = {
   burger: BurgerItem;
 };
-
-const QR_META_DESCRIPTION =
-  "大阪・心斎橋（三ツ寺会館1F）のスマッシュバーガー専門店「geezer」。100%オージービーフ使用。深夜3時まで営業・テイクアウト・デリバリー対応。";
 
 /** 店舗スタッフ向け：QRコードのみの印刷用ページ */
 export function BurgerQrPage({ burger }: Props) {

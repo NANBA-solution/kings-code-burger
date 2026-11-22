@@ -13,6 +13,8 @@ import { SIDE_ITEMS, SOFT_DRINK_ITEMS, ALCOHOL_ITEMS, SAUCE_ITEMS } from "@/data
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { SwipeImages } from "@/components/SwipeImages";
 import { scrollToId } from "@/lib/scroll";
+import { SeoJsonLd } from "@/components/SeoJsonLd";
+import { SITE_DESCRIPTION, SITE_FAQS, SITE_TITLE, type SiteFaqLang } from "@/lib/site";
 
 /** 初期ヘッダー画像（CDNから取得した原本をローカル保存） */
 const HERO_BG = publicAsset("images/hero-original.webp");
@@ -56,14 +58,10 @@ export default function Home() {
   const [navScrolled, setNavScrolled] = useState(false);
 
   useEffect(() => {
-    document.title =
-      "Geezer Smash Burger | 大阪・心斎橋のスマッシュバーガー専門店（深夜3時まで営業） / Shinsaibashi Osaka";
+    document.title = SITE_TITLE;
     document
       .querySelector('meta[name="description"]')
-      ?.setAttribute(
-        "content",
-        "大阪・心斎橋（三ツ寺会館1F）のスマッシュバーガー専門店。すべてに、納得感を。100%オージービーフのバーガー＆ホットチキンをセット価格でご提供。深夜3時まで営業・テイクアウト可。Smash burger & late night food in Shinsaibashi, Osaka."
-      );
+      ?.setAttribute("content", SITE_DESCRIPTION);
   }, [language]);
 
   useEffect(() => {
@@ -225,6 +223,7 @@ export default function Home() {
 
   return (
     <div className="kcb-site min-h-screen bg-white">
+      <SeoJsonLd />
       {/* Navigation */}
       <nav className={`kcb-nav ${navScrolled ? "scrolled" : ""}`}>
         <div className="container flex items-center justify-between py-3 md:py-4">
@@ -366,11 +365,15 @@ export default function Home() {
             </div>
             <span className="kcb-section__label">{t("section.philosophy_label")}</span>
             <h2 className="kcb-section__title">{t("philosophy.title")}</h2>
+            <p className="kcb-manifesto__lead">{t("philosophy.lead")}</p>
             <p className="kcb-manifesto__headline">{t("philosophy.headline")}</p>
             <p className="kcb-manifesto__pillars">{t("philosophy.pillars")}</p>
             <p className="kcb-manifesto__body">{t("philosophy.body")}</p>
+            <p className="kcb-manifesto__offer">{t("philosophy.offer")}</p>
             <p className="kcb-manifesto__closer">{t("philosophy.closer")}</p>
+            <p className="kcb-manifesto__value">{t("philosophy.value")}</p>
             <p className="kcb-manifesto__tagline">{t("hero.tagline")}</p>
+            <p className="kcb-manifesto__en">{t("philosophy.en_blurb")}</p>
             <div className="kcb-section__divider" />
           </header>
 
@@ -889,6 +892,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ — answer-first facts for AIO / local search */}
+      <section id="faq" className="kcb-section kcb-section--muted">
+        <div className="container">
+          <header className="kcb-section__header kcb-reveal">
+            <span className="kcb-section__label">{t("section.faq_label")}</span>
+            <h2 className="kcb-section__title">{t("faq.title")}</h2>
+            <p className="kcb-section__subtitle">{t("faq.subtitle")}</p>
+            <div className="kcb-section__divider" />
+          </header>
+          <div className="kcb-faq">
+            {SITE_FAQS[language as SiteFaqLang].map((item, index) => (
+              <div
+                key={item.question}
+                className={`kcb-faq__item kcb-reveal kcb-reveal-delay-${Math.min(index + 1, 4)}`}
+              >
+                <h3 className="kcb-faq__q">{item.question}</h3>
+                <p className="kcb-faq__a">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="kcb-footer kcb-reveal">
         <div className="kcb-footer__glow" />
@@ -897,6 +923,7 @@ export default function Home() {
             <div className="kcb-footer__brand">
               <Mascot size="xl" animated className="kcb-footer__logo" />
               <p className="opacity-60">{t("footer.subtitle")}</p>
+              <p className="kcb-footer__nap">{t("footer.nap")}</p>
             </div>
             <div className="kcb-footer__social flex gap-6">
               <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">
