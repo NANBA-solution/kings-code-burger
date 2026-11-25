@@ -50,9 +50,14 @@ export const SITE_FAQS = {
         "セットのみのご提供です。フライ（ポテト）とドリンク付きのセット価格で、100%オージービーフのスマッシュバーガーやナッシュビルホットチキンをお出しします。",
     },
     {
+      question: "オーダーのやり方は？",
+      answer:
+        "カウンターで先にご注文・お会計いただき、番号札をお渡しします。その後、席へご案内します。満席の場合は番号順にご案内します。テイクアウトも同様の流れです。",
+    },
+    {
       question: "テイクアウトやデリバリーはできますか？",
       answer:
-        "店頭の小窓からテイクアウトできます。デリバリーは Uber Eats と Rocket Now に対応しています。アルコール類はテイクアウト・デリバリー対象外です。",
+        "店頭の小窓からテイクアウトできます。電話注文も可能です（080-1520-0694）。デリバリーは Uber Eats と Rocket Now に対応しています。アルコール類はテイクアウト・デリバリー対象外です。",
     },
     {
       question: "どんなお店ですか？",
@@ -77,9 +82,14 @@ export const SITE_FAQS = {
         "Yes — set only. Each set includes fries and a drink, with 100% Aussie beef smash burgers or Nashville hot chicken.",
     },
     {
+      question: "How do I order?",
+      answer:
+        "Order and pay at the counter first, then receive a number ticket. We’ll seat you next. If we’re full, seating is in ticket-number order. Takeout follows the same flow.",
+    },
+    {
       question: "Do you offer takeout and delivery?",
       answer:
-        "Yes. Walk-up takeout from our street window, plus delivery via Uber Eats and Rocket Now. Alcohol is not available for takeout or delivery.",
+        "Yes. Walk-up takeout from our street window, or order by phone (080-1520-0694). Delivery via Uber Eats and Rocket Now. Alcohol is not available for takeout or delivery.",
     },
     {
       question: "What kind of restaurant is Geezer?",
