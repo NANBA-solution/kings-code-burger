@@ -760,6 +760,7 @@ export default function Home() {
             <span className="kcb-section__label">{t("section.shop_label")}</span>
             <h2 className="kcb-section__title">{t("shop.title")}</h2>
             <p className="kcb-section__subtitle">{t("shop.subtitle")}</p>
+            <p className="kcb-shop__note">{t("shop.note")}</p>
             <div className="kcb-section__divider" />
           </header>
 

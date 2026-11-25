@@ -1437,6 +1437,15 @@ html {
 }
 
 /* ─── Shop photo guide ─── */
+.kcb-shop__note {
+  margin: 0.35rem auto 0;
+  max-width: 28rem;
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+  font-weight: 600;
+  color: var(--kcb-charcoal);
+  opacity: 0.75;
+}
+
 .kcb-shop {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
