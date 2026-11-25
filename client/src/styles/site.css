@@ -1436,7 +1436,6 @@ html {
   background: var(--kcb-white);
 }
 
-.kcb-delivery__mascot,
 /* ─── Shop photo guide ─── */
 .kcb-shop {
   display: grid;
@@ -1484,6 +1483,16 @@ html {
   .kcb-shop__item figcaption {
     font-size: 0.72rem;
   }
+}
+
+.kcb-delivery__mascot {
+  width: clamp(2.75rem, 8vw, 3.5rem);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  mix-blend-mode: multiply;
 }
 
 .kcb-access__mascot,

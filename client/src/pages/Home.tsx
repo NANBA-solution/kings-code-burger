@@ -14,7 +14,14 @@ import { LanguageToggle } from "@/components/LanguageToggle";
 import { SwipeImages } from "@/components/SwipeImages";
 import { scrollToId } from "@/lib/scroll";
 import { SeoJsonLd } from "@/components/SeoJsonLd";
-import { SITE_DESCRIPTION, SITE_FAQS, SITE_TITLE, type SiteFaqLang } from "@/lib/site";
+import {
+  SITE_DESCRIPTION,
+  SITE_FAQS,
+  SITE_MAPS_DIR_URL,
+  SITE_MAPS_SEARCH_URL,
+  SITE_TITLE,
+  type SiteFaqLang,
+} from "@/lib/site";
 
 /** 初期ヘッダー画像（CDNから取得した原本をローカル保存） */
 const HERO_BG = publicAsset("images/hero-original.webp");
@@ -173,10 +180,8 @@ export default function Home() {
 
   const socialLinks = {
     instagram: "https://www.instagram.com/geezer.smash.burger?utm_source=qr",
-    googleReviews:
-      "https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E8%A5%BF%E5%BF%83%E6%96%8E%E6%A9%8B2-9-5%20%E4%B8%89%E3%83%83%E5%AF%BA%E4%BC%9A%E9%A4%A81F",
-    googleNavigation:
-      "https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E8%A5%BF%E5%BF%83%E6%96%8E%E6%A9%8B2-9-5%20%E4%B8%89%E3%83%83%E5%AF%BA%E4%BC%9A%E9%A4%A81F",
+    googleReviews: SITE_MAPS_SEARCH_URL,
+    googleNavigation: SITE_MAPS_DIR_URL,
   };
 
   const reviews = [
@@ -837,7 +842,7 @@ export default function Home() {
                   {t("access.navigation")}
                 </a>
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E8%A5%BF%E5%BF%83%E6%96%8E%E6%A9%8B2-9-5%20%E4%B8%89%E3%83%83%E5%AF%BA%E4%BC%9A%E9%A4%A81F"
+                  href={SITE_MAPS_SEARCH_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="kcb-btn-outline"
@@ -967,11 +972,7 @@ export default function Home() {
               <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">
                 <Instagram className="w-6 h-6" />
               </a>
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E8%A5%BF%E5%BF%83%E6%96%8E%E6%A9%8B2-9-5%20%E4%B8%89%E3%83%83%E5%AF%BA%E4%BC%9A%E9%A4%A81F"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={SITE_MAPS_SEARCH_URL} target="_blank" rel="noopener noreferrer">
                 <MapPin className="w-6 h-6" />
               </a>
               <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">

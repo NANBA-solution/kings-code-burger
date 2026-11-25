@@ -15,12 +15,17 @@ export const SITE_ADDRESS = {
   fullEn: "Mitsutera Kaikan 1F, 2-9-5 Nishishinsaibashi, Chuo-ku, Osaka 542-0086",
   mapQuery:
     "大阪府大阪市中央区西心斎橋2-9-5 三ッ寺会館1F",
+  /** Prefer store name so Maps opens the GBP listing, not just the building */
+  mapsQuery: "Geezer Smash Burger 大阪府大阪市中央区西心斎橋2-9-5",
 };
 export const SITE_GEO = {
   /** Approximate pin for Mitsutera Kaikan / Nishi-Shinsaibashi 2-9-5 */
   latitude: 34.6698,
   longitude: 135.5002,
 };
+
+export const SITE_MAPS_SEARCH_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE_ADDRESS.mapsQuery)}`;
+export const SITE_MAPS_DIR_URL = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(SITE_ADDRESS.mapsQuery)}`;
 
 export const SITE_TITLE =
   "Geezer Smash Burger | 大阪・心斎橋のスマッシュバーガー専門店（深夜3時まで営業） / Shinsaibashi Osaka";
@@ -135,7 +140,7 @@ export function restaurantJsonLd() {
       latitude: SITE_GEO.latitude,
       longitude: SITE_GEO.longitude,
     },
-    hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE_ADDRESS.mapQuery)}`,
+    hasMap: SITE_MAPS_SEARCH_URL,
     sameAs: [SITE_INSTAGRAM],
     openingHoursSpecification: [
       {
