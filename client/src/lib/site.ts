@@ -111,7 +111,12 @@ export function restaurantJsonLd() {
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     telephone: SITE_PHONE_E164,
-    image: [`${SITE_URL}/images/hero-original.webp`, `${SITE_URL}/images/geezer-logo.png`],
+    image: [
+      `${SITE_URL}/images/hero-original.webp`,
+      `${SITE_URL}/images/shop/exterior.jpg`,
+      `${SITE_URL}/images/shop/interior.jpg`,
+      `${SITE_URL}/images/geezer-logo.png`,
+    ],
     logo: `${SITE_URL}/images/geezer-logo.png`,
     servesCuisine: ["Burger", "Smash Burger", "American", "Chicken"],
     priceRange: "¥¥",

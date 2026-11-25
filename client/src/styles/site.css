@@ -1437,6 +1437,55 @@ html {
 }
 
 .kcb-delivery__mascot,
+/* ─── Shop photo guide ─── */
+.kcb-shop {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem 0.5rem;
+  width: min(100%, 26.25rem);
+  margin: 0 auto;
+}
+
+.kcb-shop__item {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  min-width: 0;
+}
+
+.kcb-shop__item img {
+  display: block;
+  width: 100%;
+  height: 7.875rem;
+  object-fit: cover;
+}
+
+.kcb-shop__item figcaption {
+  margin-top: 0.3rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--kcb-lime-dark);
+  opacity: 0.8;
+  line-height: 1.25;
+}
+
+@media (min-width: 720px) {
+  .kcb-shop {
+    width: min(100%, 30rem);
+    gap: 0.65rem 0.55rem;
+  }
+
+  .kcb-shop__item img {
+    height: 9rem;
+  }
+
+  .kcb-shop__item figcaption {
+    font-size: 0.72rem;
+  }
+}
+
 .kcb-access__mascot,
 .kcb-menu__mascot {
   width: clamp(4.25rem, 12vw, 5.75rem);

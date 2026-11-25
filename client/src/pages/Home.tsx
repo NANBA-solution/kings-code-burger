@@ -247,6 +247,7 @@ export default function Home() {
               { id: "delivery", label: t("nav.delivery") },
               { id: "reviews", label: t("nav.reviews") },
               { id: "instagram", label: t("nav.instagram") },
+              { id: "shop", label: t("nav.shop") },
               { id: "access", label: t("nav.access") },
             ].map((link) => (
               <a
@@ -692,37 +693,39 @@ export default function Home() {
               </a>
 
               {[
-                "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/KkkfCfITosPVCBCR.jpeg",
-                "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/hufNShsLtsrzCKvw.jpeg",
-                "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/owUfLkcHOrGcviBx.jpeg",
-              ].map((src, i) => (
+                {
+                  src: publicAsset("images/instagram/01.jpg"),
+                  href: "https://www.instagram.com/geezer.smash.burger/p/DgFu-A3D1Nt/",
+                },
+                {
+                  src: publicAsset("images/instagram/02.jpg"),
+                  href: "https://www.instagram.com/geezer.smash.burger/p/DfZq8hQPQrX/",
+                },
+                {
+                  src: publicAsset("images/instagram/03.jpg"),
+                  href: "https://www.instagram.com/geezer.smash.burger/p/DeNcapfze9i/",
+                },
+                {
+                  src: publicAsset("images/instagram/04.jpg"),
+                  href: "https://www.instagram.com/geezer.smash.burger/p/DcphumPCa8o/",
+                },
+                {
+                  src: publicAsset("images/instagram/05.jpg"),
+                  href: "https://www.instagram.com/geezer.smash.burger/p/DXlpgYyn4JM/",
+                },
+                {
+                  src: publicAsset("images/instagram/06.jpg"),
+                  href: "https://www.instagram.com/geezer.smash.burger/p/DXQIF6tjOCZ/",
+                },
+              ].map((item, i) => (
                 <a
                   key={`photo-${i}`}
-                  href={socialLinks.instagram}
+                  href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`kcb-instagram-item kcb-reveal kcb-reveal-delay-${(i % 3) + 1} ${i === 2 ? "hidden md:block" : ""}`}
+                  className={`kcb-instagram-item kcb-reveal kcb-reveal-delay-${(i % 3) + 1} ${i === 2 || i === 5 ? "hidden md:block" : ""}`}
                 >
-                  <img src={src} alt={`Instagram ${i + 1}`} loading="lazy" />
-                  <div className="kcb-instagram-item__overlay">
-                    <Heart className="w-8 h-8 text-white" />
-                  </div>
-                </a>
-              ))}
-
-              {[
-                "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/mibySkkqWaLSHakX.mp4",
-                "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/eZTdqqdpGNBOafkV.mp4",
-                "https://files.manuscdn.com/user_upload_by_module/session_file/310519663357978056/vLbasjUXULlmilLL.mp4",
-              ].map((src, i) => (
-                <a
-                  key={`video-${i}`}
-                  href={socialLinks.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`kcb-instagram-item kcb-reveal kcb-reveal-delay-${(i % 3) + 1} ${i === 2 ? "hidden md:block" : ""}`}
-                >
-                  <video src={src} loop muted playsInline />
+                  <img src={item.src} alt={`Instagram ${i + 1}`} loading="lazy" />
                   <div className="kcb-instagram-item__overlay">
                     <Heart className="w-8 h-8 text-white" />
                   </div>
@@ -741,6 +744,41 @@ export default function Home() {
                 {t("instagram.view")}
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Shop photos */}
+      <section id="shop" className="kcb-section kcb-section--white">
+        <div className="container">
+          <header className="kcb-section__header kcb-reveal">
+            <span className="kcb-section__label">{t("section.shop_label")}</span>
+            <h2 className="kcb-section__title">{t("shop.title")}</h2>
+            <p className="kcb-section__subtitle">{t("shop.subtitle")}</p>
+            <div className="kcb-section__divider" />
+          </header>
+
+          <div className="kcb-shop">
+            {(
+              [
+                { src: "images/shop/exterior.jpg", key: "shop.exterior" as const },
+                { src: "images/shop/interior.jpg", key: "shop.interior" as const },
+                { src: "images/shop/seating.jpg", key: "shop.seating" as const },
+                { src: "images/shop/counter-seat.jpg", key: "shop.counter" as const },
+              ] as const
+            ).map((item, index) => (
+              <figure
+                key={item.key}
+                className={`kcb-shop__item kcb-reveal kcb-reveal-delay-${Math.min(index + 1, 4)}`}
+              >
+                <img
+                  src={publicAsset(item.src)}
+                  alt={t(item.key)}
+                  loading="lazy"
+                />
+                <figcaption>{t(item.key)}</figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
